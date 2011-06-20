@@ -1,0 +1,253 @@
+/************************************************************************
+
+    Site:       Torus
+
+    Author:     Varistic        [sandra.barkhuizen@varistic.com] 
+
+    Listing Order:
+    ==============
+
+    1 - Universal
+    2 - Structure/Layout
+    3 - Headings
+    4 - Navigation
+    5 - Tables
+    6 - Forms
+
+
+/***********************************************************************
+    1 - UNIVERSAL STYLES
+************************************************************************/
+body { margin:0; padding:0; font: 75%/1.25em Arial, Helvetica, sans-serif; color: #492b27; line-height: 130%; background:url(../images/backGradient.jpg) repeat-x #8b0004;   }
+a { color:#8b0004;outline: none;}
+a:active { outline: none; border: none; }
+a:focus { -moz-outline-style: none; }
+
+.clear { margin:0; clear:both; }
+img { border:0;}
+
+/***********************************************************************
+    2 - STRUCTURE/LAYOUT
+************************************************************************/
+#wrapper { width:970px; margin:0 auto; padding:0; }
+#banner { height:127px; margin:10px 0 0 10px; no-repeat left;}
+#topBanner { margin:0; padding:0; height:14px; background:url(../images/topNavLeft.gif) no-repeat top left #bbbbbb;}
+#topBanner span { margin:0; padding:0; height:14px;display:block; background:url(../images/topNavRight.gif) top right no-repeat #ff0000;}
+#blueContainer { margin:0; padding:0 0 0 0; width:968px; background-color:#fff; border:1px solid #8b0004; border-top:1px solid #29292b;}
+#content { width:968px; background-color:#fff; margin:0 auto; padding:0;}
+#content p { padding:0 2em 1em 2em; margin:0;}
+#footer {  background-color:#333; height:40px; padding:2em; color:#FFF;}
+#footer a { color:#FFF; outline: none;}
+#login { float:left; margin:0 0 1em 10em; width:100px;}
+.red { color:#8b0005; font-weight:bold;}
+.buttonMargin { margin:0 0 1em 200px; padding:0;}
+#logAction  { float:right; display:block; margin:0 10px 0 0;}
+#logAction ul  {margin:0; padding:0;}
+#logAction li  {list-style: none; display:inline; color:#fff; font-weight:bold;}
+#logAction li.logout  a  { display:block; float:left; width:50px; height:38px; color:#fff; font-size: 1em; text-decoration:none; margin:0; background:url(../images/logout.gif) no-repeat; padding:1em 0 0 3em;outline: none;}
+#logAction li.back a  { display:block;outline: none; float:left; width:50px; height:38px; color:#fff; font-size: 1em; text-decoration:none; margin:0; background:url(../images/back.gif) no-repeat; padding:1em 0 0 3em;}
+
+#logAction li a:hover  {color:#b5b5b5;}
+/***********************************************************************
+    3 - HEADINGS
+************************************************************************/
+h1 { color:#7e0000; margin:.5em 0 .5em 1em; padding:.5em 0 0 0; font-size:2em; }
+h2 { font-size:1.25em; margin:0 0 0 2.25em; padding:0; text-align:left;}
+h3 { margin:0 2em .5em 1.10em; padding-top:1em; color:#7e0000; font-size:2em;}
+/***********************************************************************
+    4 - NAVIGATION
+    ************************************************************************/
+
+#navrightsideedge { float: right; }
+#navbarleft { height: 38px; background:url(../images/navGradient.gif); top: 0; left: 6px;   z-index: 99;}
+#nav { display:block; height:38px; width:500px; }
+.menuList { height:38px;}
+.lineGradient { background:url(../images/lineGradient.gif) no-repeat; width:1px; height:28px;}
+    /* hacked to put in z-index w/absolute position to avoid overlap w/leftnav but only fixes FF */
+#nav li {   list-style: none;   float: left; margin:.75em 0 0 0;    height: 38px;   /*background: transparent url(../images/nav/navbar-off.gif) no-repeat       right;*/}
+#nav li ul { /* second-level lists */   width: 150px;   left: -999em;   z-index: 100;   border-top: 1px solid #3F737F;  position: absolute;}
+
+    /* using left instead of display to hide menus because display: none isn't read by screen readers */
+#nav li ul li ul { /* third-level lists */  width: 150px;   left: -999em;   z-index: 100;   border-top: 1px solid #3F737F;  position: absolute;}
+#nav li ul li { background-image: none;     width: 148px;   position: relative; list-style: none; }
+#nav li ul:hover {  width: 150px; }
+
+/**
+    This the hover for menu items for example logout. Home -> Logout
+*/
+#nav li:hover ul li a {outline: none;   padding-top: 0px;   background-image: none; }
+
+/* for all subnavs */
+#nav a {    outline: none; color: #fff; display: block; text-decoration:none; }
+#nav li a { padding: .3em 2em .95em 2em;outline: none; }
+/*.flyout { background-image: url(../images/nav/arrow-wht.gif); background-position: right; background-repeat: no-repeat; }*/
+
+/*Hover over submenu item color 
+#nav li:hover ul li a:hover {   height: 40%;    background-color: #ffffdd;  }
+#nav li:hover ul li ul {    margin: -25px 0px 0 184px; }  */
+
+/* third-and-above-level lists 
+#nav li:hover ul ul,#nav li:hover ul ul ul,#nav li.sfhover ul ul,#nav li.sfhover ul ul ul   {   left: -999em; }*/
+#nav li:hover ul,#nav li li:hover ul,#nav li li li:hover ul,#nav li.sfhover ul,#nav li li.sfhover ul,#nav li li li.sfhover ul   {   left: auto; /*background: #FFFFFF url(/images/nav/nav_on_background.gif) no-repeat right;*/}
+#nav,#nav ul { /* all lists */  margin: -1px 0px;   padding: 0px;   font-size: 11px;    font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold;  color: #FFF; }
+
+/*
+    Submenu Items color before hover
+*/
+#nav li:hover ul { margin:0; padding:0;}
+#nav li:hover ul li { margin:0; padding:0;}
+
+#nav li:hover ul li { margin:0; padding:0; background-color:#7e0000; border:0; height:3em;  }
+#nav li:hover ul li a { margin:0; padding:.75em 0 .75em 2em; border:0; color:#FFF; font-weight:normal; display:block;outline: none;}
+#nav li:hover ul li a:hover { background-color:#252628;}
+
+/*Active menu items*/
+#nav li:hover a { color:#b5b5b5;outline: none;    }
+
+/***********************************************************************
+    5 - TABLES
+    ************************************************************************/
+table { margin:2em auto; width:95%; border:1px solid #FFF;}
+th {  background-color:#333333;text-align:left; color:#fff; border:1px solid #FFF; padding:.5em;}
+td { margin:0;  padding:1em; background-color:#f6f3f3; border:1px solid #FFF;}
+#login td  { margin:0;  padding:.5em; border-left:0; border-bottom:0;}
+.button { background-color:#2d2e2f; border:0; color:#FFF; padding:.5em; }
+.rightBorder {  border-right:2px solid #fff;}
+
+
+/***************************************************
+ * errors and messages                             *
+ ***************************************************/
+div.error, div.message {    background: #ffffcc;    color: #000000; font-weight: normal;    margin: 10px 0px 0px 0px;   padding: 3px 3px 3px 3px;   text-align: left;   vertical-align: middle;}
+div.error { border: 1px solid #ff0000; }
+div.message {   border: 1px solid #0000ff;  }
+.errorMessage, .errorMessage span { color: #8b0005;}
+
+
+/***************************************************
+ * Display Tag Table properties                     *
+ ***************************************************/
+
+.displayTable table {   border: 1px solid #666; width: 80%; margin: 20px 0 20px 0 !important;   padding:0;}
+
+.displayTable  th, .displayTable  td {  padding: .5em !important;   text-align: left;   vertical-align: top;}
+
+.displayTable  thead tr {   background-color: #333;}
+.displayTable  th.sorted {  background-color: #333;}
+
+.displayTable  th a,.displayTable  th a:visited{    color: #fff;    text-decoration:none;}
+
+.displayTable th a:hover {  text-decoration: none;  color: #fff;}
+
+.displayTable  th.sortable { background-color:#333333;}
+
+.displayTable  th.sorted a,.displayTable  th.sortable a {   background-position: right; display: block; width: 100%;outline: none;}
+
+.displayTable  th.order1 a {    background: url(../images/arrow-down.gif) no-repeat right center ;  outline: none;}
+.order1 a:hover { color:#FFF;} 
+
+.displayTable  th.order2 a {    background: url(../images/arrow-up.gif) no-repeat right center;outline: none;}
+
+.displayTable  tr.odd { background-color: #fff}
+
+.displayTable  tr.tableRowEven,.displayTable tr.even {  background-color: #e4e4e4;}
+
+.displayTable  div.exportlinks {    background-color: #eee; border: 1px dotted #999;    padding: 2px 4px 2px 4px;   margin: 2px 0 10px 0;   width: 79%; font-weight:bold;}
+
+
+.exportlinks { margin:0 0 0 2em; font-weight:bold;}
+
+.displayTable  span.export {    padding: 0 4px 1px 20px;    display: inline;    display: inline-block;  cursor: pointer;}
+
+.displayTable  span.excel { background-image: url(../images/ico_file_excel.png);    }
+
+.displayTable span.pagebanner { background-color: #eee; border: 1px dotted #999;    padding: 2px 4px 2px 4px;   width: 79%; margin-top: 10px;       display: block; border-bottom: none;}
+.pagebanner { margin:0 0 0 2em; font-weight:bold; color:#7e0000;}
+
+.displayTable span.pagelinks {  background-color: #eee; border: 1px dotted #999;    padding: 2px 4px 2px 4px;   width: 79%; display: block; border-top: none;   margin-bottom: -5px;}
+
+.pagelinks { display:block; float:right; margin:0 2em 0 0;}
+.pageMenuInner  { display:block; width:970px; }
+.pageMenuInner ul { margin:0 2em 1em 0; padding:0; display:block; height:30px; float:right;}
+.pageMenuInner li { list-style:none; display:inline;}
+.pageMenuInner li a { margin:0 0 0 2em;outline: none;}
+
+.pageMenuInner .comment a, 
+.pageMenuInner .close a, 
+.pageMenuInner .addNewPerson a,
+.pageMenuInner .indicators a,
+.pageMenuInner .competency a,
+.pageMenuInner .competencyList a,
+.pageMenuInner .newJobRole a, 
+.pageMenuInner .add a, 
+.pageMenuInner .home a, 
+.pageMenuInner .people a, 
+.pageMenuInner .edit a,
+.pageMenuInner .objectives a,
+.pageMenuInner .developments a, 
+.pageMenuInner .competencies a,
+.pageMenuInner .observers a,
+.pageMenuInner .appraisals a,
+.pageMenuInner .objectiveList a 
+{ 
+float:left; color:#999; font-weight:bold; text-decoration:none; display:block;  height:30px; padding:.6em 0 0 3.5em;outline: none;
+}
+
+.pageMenuInner .comment a:hover, 
+.pageMenuInner .close a:hover, 
+.pageMenuInner .addNewPerson a:hover,
+.pageMenuInner .indicators a:hover,
+.pageMenuInner .competency a:hover,
+.pageMenuInner .competencyList a:hover,
+.pageMenuInner .newJobRole a:hover, 
+.pageMenuInner .add a:hover, 
+.pageMenuInner .home a:hover, 
+.pageMenuInner .people a:hover, 
+.pageMenuInner .edit a:hover,
+.pageMenuInner .objectives a:hover,
+.pageMenuInner .developments a:hover, 
+.pageMenuInner .competencies a:hover,
+.pageMenuInner .observers a:hover,
+.pageMenuInner .appraisals a:hover,
+.pageMenuInner .objectiveList a:hover 
+{ 
+color:#000; 
+}
+
+.pageMenuInner .addNewPerson a, .pageMenuInner .newJobRole a, .pageMenuInner .add a {background:url(../images/addNew.gif) no-repeat;outline: none;}
+.pageMenuInner .people a {background:url(../images/people.gif) no-repeat;outline: none; }
+.pageMenuInner .edit a {background:url(../images/edit.gif) no-repeat; width:40px;outline: none; }
+.pageMenuInner .objectives a {background:url(../images/objectives.gif) no-repeat; outline: none;}
+.pageMenuInner .developments a {background:url(../images/developments.gif) no-repeat;outline: none; }
+.pageMenuInner .observers a {background:url(../images/observers.gif) no-repeat;outline: none; }
+.pageMenuInner .appraisals a {background:url(../images/appraisals.gif) no-repeat;outline: none;}
+.pageMenuInner .home a {background:url(../images/home.gif) no-repeat;outline: none; }
+.pageMenuInner .competencies a, .pageMenuInner .competency a {background:url(../images/comp.gif) no-repeat; outline: none;}
+.pageMenuInner .competencyList a {background:url(../images/competenciesList.gif) no-repeat;outline: none;}
+.pageMenuInner .indicators a {background:url(../images/indicators.gif) no-repeat;outline: none;}
+.pageMenuInner .close a {background:url(../images/close.gif) no-repeat;outline: none;}
+.pageMenuInner .comment a {background:url(../images/comment.gif) no-repeat;outline: none;}
+
+.pageMenuInner .jobRoleDetails a {background:url(../images/jobRoleDetails.gif) no-repeat;outline: none;}
+.pageMenuInner .objectiveList a {background:url(../images/jobRoleDetails.gif) no-repeat;outline: none;}
+
+/***********************************************************************
+    6 - FORMS
+    ************************************************************************/
+label { float:left; width:100px; font-weight:bold; }
+
+/***
+    Checkbox controls here.
+***/
+.form label  {  float:left; width:530px; font-weight:bold; }
+
+div.checkBox input  {  width:50px;font-family:Arial, Helvetica, sans-serif; font-size:14px; }
+/**
+    End of checkbox controls
+*/
+
+input { width:300px;font-family:Arial, Helvetica, sans-serif; font-size:14px;}
+textarea { width:300px;outline: none; font-family:Arial, Helvetica, sans-serif; font-size:14px;}
+.button { width:150px; background-color:#8b0005;}
+select { width:305px;}
+.login { color:#242424; font-family:Geneva, Verdana, sans-serif; background:url(../images/login.gif) no-repeat right; width:120px; padding:0 8em 0 0; font-weight:bold; font-size:1.5em; height:65px; border:0;}
