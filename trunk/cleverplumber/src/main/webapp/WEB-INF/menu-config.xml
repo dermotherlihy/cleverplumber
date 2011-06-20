@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MenuConfig>
+    <Displayers>
+        <Displayer name="Velocity" type="net.sf.navigator.displayer.CSSListMenuDisplayer" />    			
+    </Displayers>
+
+    <Menus>
+		<Menu name="People" title="People" roles="ROLE_USER">
+			<Item name="PersonList" title="Person Job Role List" page="/personJobRoleList.do" />
+			<Item name="NewPerson" title="New Person" page="/person.do" roles="ROLE_MANAGER"/>
+		</Menu>
+		<Menu name="JobRole" title="Job Role" roles="ROLE_ADMIN">
+			<Item name="JobRoleList" title="Job Role List" page="/jobRoleList.do" />
+			<Item name="NewJobRole" title="New Job Role" page="/jobRole.do" />
+		</Menu>
+		<Menu name="Competencies" title="Competencies" roles="ROLE_ADMIN">
+       		<Item name="CompetencyList" title="Competency List" page="/competencyList.do" />
+       		<Item name="NewCompetency" title="New Competency" page="/competency.do" />
+       	</Menu>
+       	<Menu name="Security" title="Security" roles="ROLE_USER">
+        	<Item name="ChangePassword" title="Change Password" page="/personPassword.do" />
+        </Menu> 
+    </Menus>
+</MenuConfig>
