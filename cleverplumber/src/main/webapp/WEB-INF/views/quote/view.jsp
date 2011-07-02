@@ -15,16 +15,24 @@
 		<form:form modelAttribute="quote" action="${quote.id}" method="post">
 		  	<fieldset>		
 				<p>
-					<form:label	for="customer.name" path="customer.name">Customer Name</form:label><br/>
-					<form:input path="customer.name" readonly="true"/>		
-				</p>
-				<p>	
-					<form:label for="labourAmount" path="labourAmount">Labour Cost</form:label><br/>
-					<form:input path="labourAmount" readonly="true"/>
+					<form:label	for="customer.fullName" path="customer.fullName" cssErrorClass="error">Customer</form:label>
+					<form:input path="customer.firstName" readonly="true"/>			
 				</p>
 				<p>
-					<form:label for="materialsAmount" path="materialsAmount">Materials Cost</form:label><br/>
-					<form:input path="materialsAmount" readonly="true"/>
+					<form:label	for="quoteType.description" path="quoteType.description" cssErrorClass="error">Quote Type</form:label>
+					<form:input path="quoteType.description" readonly="true"/>			
+				</p>
+				<p>
+					<form:label	for="brochureType.description" path="brochureType.description" cssErrorClass="error">Brochure</form:label>
+					<form:input path="brochureType.description" readonly="true"/>			
+				</p>
+				<p>	
+					<form:label for="labourCost" path="labourCost">Labour Cost</form:label>
+					<form:input path="labourCost" readonly="true"/>
+				</p>
+				<p>
+					<form:label for="materialCost" path="materialCost">Materials Cost</form:label>
+					<form:input path="materialCost" readonly="true"/>
 				</p>
 			</fieldset>
 		</form:form>
