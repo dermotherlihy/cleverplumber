@@ -1,5 +1,7 @@
 package com.cleverplumber.app.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -18,8 +20,14 @@ public class CompanyController {
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
-		model.addAttribute(new Company());
-		return "company/createForm";
+		List<Company> companies = Company.findAllCompanys();
+		if(Company.findAllCompanys().size() > 0){
+			model.addAttribute(companies.get(0));
+			return "company/view";
+		}else{
+			model.addAttribute(new Company());
+			return "company/createForm";
+		}
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)

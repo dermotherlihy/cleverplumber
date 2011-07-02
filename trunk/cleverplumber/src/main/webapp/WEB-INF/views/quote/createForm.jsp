@@ -15,18 +15,35 @@
 	<div class="span-12 last">	
 		<form:form modelAttribute="quote" action="quote" method="post">
 		  	<fieldset>		
-				<legend>Quote Fields</legend>
+				<p>
+					<form:select path="company" items="${companyList}" itemValue="id" itemLabel="name"/>
+					<form:errors path="company" cssClass="errors"/>
+				</p>
 				<p>
 					<form:select path="customer" items="${customerList}" itemValue="id" itemLabel="fullName"/>
 					<form:errors path="customer" cssClass="errors"/>
+				</p>
 				<p>
+                  <form:select path="quoteType">
+                     <form:option value="" label="" />
+                     <form:options items="${quoteTypes}" itemValue="value" itemLabel="description"/>
+                  </form:select>
+                  <form:errors path="quoteType" cssClass="errorMessage" />
+               </p>
+               <p>
+                  <form:select path="brochureType">
+                     <form:option value="" label="" />
+                     <form:options items="${brochureTypes}" itemValue="value" itemLabel="description"/>
+                  </form:select>
+                  <form:errors path="brochureType" cssClass="errorMessage" />
+               </p>
 				<p>	
-					<form:label for="labourAmount" path="labourAmount" cssErrorClass="error">Labour Cost</form:label><br/>
-					<form:input path="labourAmount" /> <form:errors path="labourAmount" />
+					<form:label for="labourCost" path="labourCost" cssErrorClass="error">Labour Cost</form:label><br/>
+					<form:input path="labourCost" /> <form:errors path="labourCost" />
 				</p>
 				<p>	
-					<form:label for="materialsAmount" path="materialsAmount" cssErrorClass="error">Materials Cost</form:label><br/>
-					<form:input path="materialsAmount" /> <form:errors path="materialsAmount" />
+					<form:label for="materialCost" path="materialCost" cssErrorClass="error">Materials Cost</form:label><br/>
+					<form:input path="materialCost" /> <form:errors path="labourCost" />
 				</p>
 				<p>	
 					<input type="submit" />
