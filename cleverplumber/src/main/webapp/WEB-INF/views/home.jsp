@@ -11,8 +11,8 @@
 <div class="container">  
 	<hr>	
 	<ul>
-		<li><a href="customerList">Customers</a></li>
-		<li><a href="quote">Quotes</a></li>
+		<li><a href="viewCustomer/list">Customers</a></li>
+		<li><a href="viewQuote/list">Quotes</a></li>
 		<li><a href="company">Company Information</a></li>
 	</ul>
 </div>

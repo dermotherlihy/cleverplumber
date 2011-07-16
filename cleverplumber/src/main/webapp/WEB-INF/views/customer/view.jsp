@@ -58,7 +58,7 @@
 				<ul>
 					<li class="competencies"><a href="home">Home</a>
 					</li>
-					<li class="competencies"><a href="customerList">Customer List</a>
+					<li class="competencies"><a href="viewCustomer/list">Customer List</a>
 					</li>
 				</ul>
 			</div>

@@ -12,7 +12,7 @@
 		Create Customer
 	</h1>
 	<div class="span-12 last">	
-		<form:form modelAttribute="customer" action="customer" method="post">
+		<form:form modelAttribute="customer" method="post">
 		  	<fieldset>		
 				<p>
 					<form:label	for="title" path="title" cssErrorClass="error">Title</form:label>

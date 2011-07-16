@@ -13,7 +13,7 @@
 		Create Quote
 	</h1>
 	<div class="span-12 last">	
-		<form:form modelAttribute="quote" action="quote" method="post">
+		<form:form modelAttribute="quote" method="post">
 		  	<fieldset>		
 				<p>
 					<form:select path="company" items="${companyList}" itemValue="id" itemLabel="name"/>
