@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#D9C3C3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE6E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="text" class="java.lang.String">
+			<fieldDescription><![CDATA[text]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="Table Dataset"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Program Files\\Jaspersoft\\iReport-4.0.2\\ireport\\modules\\ext\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="company" class="com.dermotherlihy.quotation.model.Company">
+		<fieldDescription><![CDATA[company]]></fieldDescription>
+	</field>
+	<field name="customer" class="com.dermotherlihy.quotation.model.Customer">
+		<fieldDescription><![CDATA[customer]]></fieldDescription>
+	</field>
+	<field name="comments" class="java.util.Set">
+		<fieldDescription><![CDATA[comments]]></fieldDescription>
+	</field>
+	<field name="brochureType" class="com.dermotherlihy.quotation.model.BrochureType">
+		<fieldDescription><![CDATA[brochureType]]></fieldDescription>
+	</field>
+	<field name="labourCost" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[labourCost]]></fieldDescription>
+	</field>
+	<field name="materialCost" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[materialCost]]></fieldDescription>
+	</field>
+	<field name="quoteType" class="com.dermotherlihy.quotation.model.QuoteType">
+		<fieldDescription><![CDATA[quoteType]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="586" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="298" width="520" height="258"/>
+				<textElement/>
+				<text><![CDATA[Thank you for the opportunity to survey your property to discuss your requirements and provide a quotation for your project.
+
+Watford Plumbers pride themselves on combining appropriate heat source technologies, products and heating system controls to deliver cost effective, energy efficient, space and water heating
+solutions.
+
+We offer a wide range of traditional plumbing and heating services including the supply and installation of high efficiency condensing boilers, TRV’s, thermostats and programmers, alongside
+renewable and sustainable options, such as solar panels which harness the constant free energy available from the sun, heat pumps integrated with under floor heating, and zone control which
+provides full control over every aspect of any heating system
+
+If you have any further questions or would like to proceed and book in an installation date pleasedo not hesitate to contact us on 01923 883 711 or watfordplumber@live.co.uk
+
+Kind Regards
+Neil O’Sullivan]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="437" y="31" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getAddressLine2()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="51" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getAddressLine3()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="71" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getPostcode()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="91" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getPhoneNumber()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="111" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getEmailAddress()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="131" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getFullName()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="151" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getAddressLine1()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="171" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getAddressLine2()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="191" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getAddressLine3()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="211" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getPostcode()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="11" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getAddressLine1()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="0" width="154" height="20" forecolor="#9999FF"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getName()]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="556" width="100" height="1"/>
+			</break>
+		</band>
+		<band height="97">
+			<componentElement>
+				<reportElement x="72" y="71" width="465" height="23"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="dataset1">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{comments})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="23">
+						<textField>
+							<reportElement x="22" y="0" width="443" height="20"/>
+							<textElement>
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression class="java.lang.String"><![CDATA[$F{text}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement x="10" y="0" width="12" height="20"/>
+							<textElement>
+								<font size="10" isBold="true"/>
+							</textElement>
+							<text><![CDATA[•]]></text>
+						</staticText>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="19" y="41" width="162" height="30"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Labour]]></text>
+			</staticText>
+		</band>
+		<band height="146">
+			<rectangle>
+				<reportElement x="17" y="17" width="514" height="97"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="17" y="46" width="514" height="1"/>
+			</line>
+			<line>
+				<reportElement x="17" y="81" width="514" height="1"/>
+			</line>
+			<line>
+				<reportElement x="171" y="17" width="1" height="97"/>
+				<graphicElement>
+					<pen lineWidth="3.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="30" y="27" width="100" height="19"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Materials]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="30" y="61" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Labour]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="94" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="232" y="26" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{labourCost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="61" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{materialCost}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="223" y="26" width="9" height="20"/>
+				<textElement/>
+				<text><![CDATA[£]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="61" width="9" height="20"/>
+				<textElement/>
+				<text><![CDATA[£]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="94" width="9" height="20"/>
+				<textElement/>
+				<text><![CDATA[£]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="232" y="94" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{labourCost}.add($F{materialCost})]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="267">
+			<staticText>
+				<reportElement x="17" y="0" width="516" height="264"/>
+				<textElement/>
+				<text><![CDATA[To accept this quote a 50% deposit will be required in cleared funds before confirming an appointment. The remaining monies are due upon completion of works.
+We accept cash, bank transfer and cheque.
+
+Bank Account Details (please use name as reference):
+Sort Code : 20-91-79
+Account Number : 53068641
+
+
+Please send cheques to (Please clearly state your name on reverse side of cheque):
+Watford Plumbers,
+
+17 Bramshaw Gardens
+Watford,
+
+WD19 6XR
+
+
+Estimate valid for 3 months from date issued.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="107" splitType="Stretch">
+			<image>
+				<reportElement x="61" y="12" width="478" height="95"/>
+				<imageExpression class="java.lang.String"><![CDATA["http://www.watfordplumbers.com/images/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
