@@ -1,6 +1,7 @@
-package com.cleverplumber.app.controller;
+package com.cleverplumber.app.controller.quote;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -9,11 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cleverplumber.app.exception.ResourceNotFoundException;
 import com.cleverplumber.app.propertyeditor.BigDecimalPropertyEditor;
 import com.cleverplumber.app.propertyeditor.BrochureTypeEditor;
 import com.cleverplumber.app.propertyeditor.QuoteTypeEditor;
@@ -24,15 +23,17 @@ import com.dermotherlihy.quotation.model.Quote;
 import com.dermotherlihy.quotation.model.QuoteType;
 
 @Controller
-@RequestMapping(value = "/quote")
-public class QuoteController {
+@RequestMapping(value = "/newQuote")
+public class NewQuoteController {
 
 	@InitBinder
-	public void initBinder(WebDataBinder binder)
-	{
-      binder.registerCustomEditor(BigDecimal.class, null, new BigDecimalPropertyEditor());
-      binder.registerCustomEditor(QuoteType.class, null, new QuoteTypeEditor());
-      binder.registerCustomEditor(BrochureType.class, null, new BrochureTypeEditor());
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(BigDecimal.class, null,
+				new BigDecimalPropertyEditor());
+		binder.registerCustomEditor(QuoteType.class, null,
+				new QuoteTypeEditor());
+		binder.registerCustomEditor(BrochureType.class, null,
+				new BrochureTypeEditor());
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -51,17 +52,8 @@ public class QuoteController {
 			return "quote/createForm";
 		}
 		quote.persist();
-		return "redirect:/addQuoteComment/" + quote.getId();
-	}
-	
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public String getView(@PathVariable Long id, Model model) {
-		Quote quote = Quote.findQuote(id);
-		if (quote == null) {
-			throw new ResourceNotFoundException(id);
-		}
-		model.addAttribute(quote);
-		return "quote/view";
+		return "redirect:/comment/" + quote.getId();
 	}
 
+	
 }

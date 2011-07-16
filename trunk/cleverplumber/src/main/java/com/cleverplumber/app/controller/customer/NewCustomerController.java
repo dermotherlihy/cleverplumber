@@ -1,4 +1,4 @@
-package com.cleverplumber.app.controller;
+package com.cleverplumber.app.controller.customer;
 
 import javax.validation.Valid;
 
@@ -7,16 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cleverplumber.app.exception.ResourceNotFoundException;
 import com.dermotherlihy.quotation.model.Customer;
 
 @Controller
-@RequestMapping(value = "/customer")
-public class CustomerController {
+@RequestMapping(value = "/newCustomer")
+public class NewCustomerController {
 
 	@Autowired
 	private Validator validator;
@@ -36,15 +34,4 @@ public class CustomerController {
 		customer.persist();
 		return "redirect:/customer/" + customer.getId();
 	}
-
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public String getView(@PathVariable Long id, Model model) {
-		Customer customer = Customer.findCustomer(id);
-		if (customer == null) {
-			throw new ResourceNotFoundException(id);
-		}
-		model.addAttribute(customer);
-		return "customer/view";
-	}
-
 }
