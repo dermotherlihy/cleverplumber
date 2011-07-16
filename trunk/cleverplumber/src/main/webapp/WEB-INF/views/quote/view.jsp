@@ -34,10 +34,31 @@
 					<form:label for="materialCost" path="materialCost">Materials Cost</form:label>
 					<form:input path="materialCost" readonly="true"/>
 				</p>
+		
+				<p>
+					<form:label for="Comments" path="materialCost">Comments</form:label>
+					<c:forEach items="${quote.comments}" var="comment">
+                           	 <c:out value="${comment.text}"/>&nbsp
+                    </c:forEach>
+				</p>
 			</fieldset>
 		</form:form>
 	</div>
-	<hr>	
+	
+	<hr>
+		<div class="pageMenu">
+			<div class="pageMenuInner">
+				<ul>
+					<li class="competencies"><a href="home">Home</a>
+					</li>
+					<li class="competencies"><a href="viewQuote/list">Quote List</a>
+					</li>
+					<li class="competencies"><a href="viewQuote/pdf/${quote.id}">View PDF</a>
+					</li>
+				</ul>
+			</div>
+			<br class="clear" />
+		</div>	
 </div>
 </body>
 </html>

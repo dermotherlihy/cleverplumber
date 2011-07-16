@@ -8,18 +8,16 @@
 	</head>
 
 	<body>
-			<form:form commandName="quote">
-            <form:hidden path="id"/>
+			<form:form commandName="comment">
+            <form:hidden path="quote.id"/>
 			<table class="form">
 				<tr>
 					<td valign="top">
 						Add Comment
 					</td>
 					<td>
-						<textarea rows="5" class="inputlarge" name="newComment"></textarea>
-						<c:if test="${!empty requestScope.commentError}">
-						 	<span class="errorMessage">${requestScope.commentError}</span>
-						</c:if>
+						<form:textarea rows="5" cssClass="inputmedium" path="text" />
+						<form:errors path="text" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -35,6 +33,7 @@
 					<td >
 					   <c:forEach items="${quote.comments}" var="comment">
                            	 <c:out value="${comment.text}"/>&nbsp
+                           	 <a href="edit/${comment.id}">Edit</a>
                        </c:forEach>
                 	</td>
 				</tr>
