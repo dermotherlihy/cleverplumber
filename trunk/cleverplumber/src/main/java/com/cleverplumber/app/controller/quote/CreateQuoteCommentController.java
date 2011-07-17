@@ -16,26 +16,31 @@ import com.dermotherlihy.quotation.model.Quote;
 @Controller
 @RequestMapping(value = "/comment/{quoteId}")
 public class CreateQuoteCommentController {
-	
+
 	@ModelAttribute("quote")
 	public Quote getQuote(@PathVariable Long quoteId) {
 		return Quote.findQuote(quoteId);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String addCommentToQuote(Quote quote, Model model) {
 		Comment comment = new Comment();
 		comment.setQuote(quote);
 		model.addAttribute(comment);
-		return "quote/addComment";
+		return "addQuoteComment";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String createComment(Comment comment, BindingResult result, Quote quote, HttpServletRequest request, Model model) {
+
+		if (request.getParameter("finish") != null) {
+			return "redirect:/viewQuote/" + quote.getId();
+		}
+
 		comment.setQuote(quote);
 		comment.persist();
 		quote.getComments().add(comment);
 		model.addAttribute(quote);
-		return "quote/addComment";
+		return "addQuoteComment";
 	}
 }

@@ -15,7 +15,7 @@ import com.cleverplumber.app.exception.ResourceNotFoundException;
 import com.dermotherlihy.quotation.model.Customer;
 
 @Controller
-@RequestMapping(value="/viewCustomer")
+@RequestMapping(value="viewCustomer")
 public class ViewCustomerController {
 
 	@ModelAttribute("customer")
@@ -34,19 +34,19 @@ public class ViewCustomerController {
 			throw new ResourceNotFoundException(id);
 		}
 		model.addAttribute(customer);
-		return "customer/view";
+		return "viewCustomer";
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCustomer(Customer customer, Model model) {
 		model.addAttribute(customer);
-		return "customer/view";
+		return "viewCustomer";
 	}
 	
 	@RequestMapping(value = "/list")
 	public String getCustomers(Model model) {
 		List<Customer> customerList =  Customer.findAllCustomers();
 		model.addAttribute("customerList",customerList );
-		return "customer/customerList";
+		return "customerList";
 	}
 }

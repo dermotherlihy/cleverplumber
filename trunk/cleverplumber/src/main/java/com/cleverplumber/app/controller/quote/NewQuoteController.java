@@ -1,7 +1,6 @@
 package com.cleverplumber.app.controller.quote;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -23,7 +22,7 @@ import com.dermotherlihy.quotation.model.Quote;
 import com.dermotherlihy.quotation.model.QuoteType;
 
 @Controller
-@RequestMapping(value = "/newQuote")
+@RequestMapping(value = "newQuote")
 public class NewQuoteController {
 
 	@InitBinder
@@ -43,13 +42,13 @@ public class NewQuoteController {
 		model.addAttribute("companyList", Company.findAllCompanys());
 		model.addAttribute("quoteTypes", QuoteType.values());
 		model.addAttribute("brochureTypes", BrochureType.values());
-		return "quote/createForm";
+		return "createQuote";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(@Valid Quote quote, BindingResult result) {
 		if (result.hasErrors()) {
-			return "quote/createForm";
+			return "createQuote";
 		}
 		quote.persist();
 		return "redirect:/comment/" + quote.getId();

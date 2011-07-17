@@ -16,7 +16,7 @@ import com.cleverplumber.app.exception.ResourceNotFoundException;
 import com.dermotherlihy.quotation.model.Quote;
 
 @Controller
-@RequestMapping(value = "/viewQuote")
+@RequestMapping(value = "viewQuote")
 public class ViewQuoteController {
 	
 	@ModelAttribute("quote")
@@ -35,7 +35,7 @@ public class ViewQuoteController {
 			throw new ResourceNotFoundException(id);
 		}
 		model.addAttribute(quote);
-		return "quote/view";
+		return "viewQuote";
 	}
 	
 
@@ -55,14 +55,14 @@ public class ViewQuoteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getQuote(Quote quote, Model model) {
 		model.addAttribute(quote);
-		return "quote/view";
+		return "viewQuote";
 	}
 	
 	@RequestMapping(value = "/list")
 	public String getQuotes(Model model) {
 		List<Quote> quoteList = Quote.findAllQuotes();
 		model.addAttribute("quoteList", quoteList);
-		return "quote/quoteList";
+		return "quoteList";
 	}
 
 }
