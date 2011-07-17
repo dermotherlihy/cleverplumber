@@ -15,7 +15,7 @@ import com.cleverplumber.app.exception.ResourceNotFoundException;
 import com.dermotherlihy.quotation.model.Company;
 
 @Controller
-@RequestMapping(value="/company")
+@RequestMapping(value="company")
 public class CompanyController {
 
 	@RequestMapping(method=RequestMethod.GET)
@@ -23,20 +23,20 @@ public class CompanyController {
 		List<Company> companies = Company.findAllCompanys();
 		if(Company.findAllCompanys().size() > 0){
 			model.addAttribute(companies.get(0));
-			return "company/view";
+			return "viewCompany";
 		}else{
 			model.addAttribute(new Company());
-			return "company/createForm";
+			return "createCompany";
 		}
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String create(@Valid Company company, BindingResult result) {
 		if (result.hasErrors()) {
-			return "company/createForm";
+			return "createCompany";
 		}
 		company.persist();
-		return "redirect:/company/" + company.getId();
+		return "redirect:company/" + company.getId();
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
@@ -46,7 +46,7 @@ public class CompanyController {
 			throw new ResourceNotFoundException(id);
 		}
 		model.addAttribute(company);
-		return "company/view";
+		return "viewCompany";
 	}
 
 }

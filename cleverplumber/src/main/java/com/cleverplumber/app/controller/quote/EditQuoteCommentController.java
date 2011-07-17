@@ -15,24 +15,23 @@ import com.dermotherlihy.quotation.model.Comment;
 @Controller
 @RequestMapping(value = "/comment/edit/{id}")
 public class EditQuoteCommentController {
-	
+
 	@ModelAttribute("comment")
 	public Comment getComment(@PathVariable Long id) {
 		return Comment.findComment(id);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String editComment(Comment comment,  Model model) {
+	public String editComment(Comment comment, Model model) {
 		model.addAttribute(comment);
-		return "quote/editComment";
+		return "editQuoteComment";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String submitComment(Comment comment, BindingResult result, HttpServletRequest request, Model model) {
+
 		String successUrl = "redirect:/comment/" + comment.getQuote().getId();
-		comment = Comment.entityManager().merge(comment);
-		System.out.println(comment.getText());
+		comment.persist();
 		return successUrl;
 	}
 }
-

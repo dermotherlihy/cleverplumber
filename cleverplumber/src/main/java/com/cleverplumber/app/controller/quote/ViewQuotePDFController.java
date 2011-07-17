@@ -13,7 +13,7 @@ import com.cleverplumber.app.exception.ResourceNotFoundException;
 import com.dermotherlihy.quotation.model.Quote;
 
 @Controller
-@RequestMapping(value = "/quotePDF")
+@RequestMapping(value = "quotePDF")
 public class ViewQuotePDFController {
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
