@@ -2,6 +2,7 @@ package com.cleverplumber.app.controller.quote;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cleverplumber.app.service.email.EmailManager;
 import com.dermotherlihy.quotation.model.Comment;
 import com.dermotherlihy.quotation.model.Quote;
 
@@ -17,6 +19,10 @@ import com.dermotherlihy.quotation.model.Quote;
 @RequestMapping(value = "/comment/{quoteId}")
 public class CreateQuoteCommentController {
 
+	@Autowired
+	private EmailManager emailManager;
+	
+	
 	@ModelAttribute("quote")
 	public Quote getQuote(@PathVariable Long quoteId) {
 		return Quote.findQuote(quoteId);
@@ -34,6 +40,7 @@ public class CreateQuoteCommentController {
 	public String createComment(Comment comment, BindingResult result, Quote quote, HttpServletRequest request, Model model) {
 
 		if (request.getParameter("finish") != null) {
+			emailManager.sendEmail(quote);
 			return "redirect:/viewQuote/" + quote.getId();
 		}
 
