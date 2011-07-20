@@ -57,6 +57,18 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>3.0.5.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<!-- Email -->
+		<dependency>
+			<groupId>velocity</groupId>
+			<artifactId>velocity-dep</artifactId>
+			<version>1.4</version>
+		</dependency>
 		<!-- Display Tag -->
 		<dependency>
 			<groupId>displaytag</groupId>
