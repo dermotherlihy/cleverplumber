@@ -1,0 +1,32 @@
+<HTML>
+ <HEAD>
+ </HEAD>
+<BODY>
+<table>
+	<tr>
+		<td><p>Dear ${quote.customer.fullName},</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Thank you for requesting a quote from Watford Plumbers.</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Please find your quote attached.</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Kind Regards,</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Neil O'Sullivan</p>
+		</td>
+	</tr>
+</table>
+</BODY>
+
