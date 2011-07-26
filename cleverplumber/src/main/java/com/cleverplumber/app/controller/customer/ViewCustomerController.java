@@ -34,19 +34,19 @@ public class ViewCustomerController {
 			throw new ResourceNotFoundException(id);
 		}
 		model.addAttribute(customer);
-		return "viewCustomer";
+		return "customer/viewCustomer";
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCustomer(Customer customer, Model model) {
 		model.addAttribute(customer);
-		return "viewCustomer";
+		return "customer/viewCustomer";
 	}
 	
 	@RequestMapping(value = "/list")
 	public String getCustomers(Model model) {
 		List<Customer> customerList =  Customer.findAllCustomers();
 		model.addAttribute("customerList",customerList );
-		return "customerList";
+		return "customer/customerList";
 	}
 }

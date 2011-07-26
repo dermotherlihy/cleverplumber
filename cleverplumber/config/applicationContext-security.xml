@@ -7,7 +7,6 @@
        http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/**" access="ROLE_USER" />
 		<form-login login-page="/login.jsp"
 			authentication-failure-url="/login.jsp?error=true"
 			default-target-url="/home" login-processing-url="/j_security_check" />
@@ -16,15 +15,13 @@
 		<intercept-url pattern="/scripts/**" filters="none" />
 		<intercept-url pattern="/images/**" filters="none" />
 		<intercept-url pattern="/style/**" filters="none" />
-	
-
-
+		<intercept-url pattern="/**" access="ROLE_USER" />
 	</http>
 
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
 			<user-service>
-				<user name="ned" password="ned" authorities="ROLE_USER" />
+				<user name="neil" password="neil" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

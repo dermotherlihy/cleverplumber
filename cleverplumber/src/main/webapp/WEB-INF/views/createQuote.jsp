@@ -15,15 +15,11 @@
 	<div class="span-12 last">	
 		<form:form modelAttribute="quote" method="post">
 		  	<fieldset>		
+				<form:hidden path="customer.id"/>
 				<p>
 					<form:label for="company" path="company" cssErrorClass="error">Company</form:label><br/>
 					<form:select path="company" items="${companyList}" itemValue="id" itemLabel="name"/>
 					<form:errors path="company" cssClass="errors"/>
-				</p>
-				<p>
-					<form:label for="customer" path="customer" cssErrorClass="error">Customer</form:label><br/>
-					<form:select path="customer" items="${customerList}" itemValue="id" itemLabel="fullName"/>
-					<form:errors path="customer" cssClass="errors"/>
 				</p>
 				<p>
                   <form:label for="quoteType" path="quoteType" cssErrorClass="error">Quote Type</form:label><br/>

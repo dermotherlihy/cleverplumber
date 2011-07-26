@@ -17,10 +17,7 @@
         <div class="pageMenu">
             <div class="pageMenuInner">
                 <ul>
-                	<li class="competencies"><a href="../newQuote">New Quote</a></li>
-                </ul>
-                <ul>
-                	<li class="competencies"><a href="../home">Home</a></li>
+                	<li class="competencies"><a href="<c:url value='/home'/>">Home</a></li>
                 </ul>
             </div><br class="clear" />
         </div>
