@@ -39,9 +39,9 @@ public class MailEngine {
 		((JavaMailSenderImpl) mailSender).send(new MimeMessagePreparator() {
 			   public void prepare(MimeMessage mimeMessage) throws MessagingException {
 				     MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				     message.setFrom("watford.plumber@gmail.com");
+				     message.setFrom(from);
 				     message.setTo(to);
-				     message.setSubject("Quote");
+				     message.setSubject(subject);
 				     message.setText(textPartStr, true);
 				    
 				     for (Iterator<Entry<String,InputStreamSource>> iterator = attachmentMap.entrySet().iterator(); iterator.hasNext();) {

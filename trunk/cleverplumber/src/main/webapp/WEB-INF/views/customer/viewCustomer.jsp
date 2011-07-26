@@ -59,10 +59,10 @@
 		<div class="pageMenu">
 			<div class="pageMenuInner">
 				<ul>
-					<li class="competencies"><a href="<c:url value='/home'/>">Home</a>
-					</li>
-					<li class="competencies"><a href="<c:url value='/viewCustomer/list'/>">Customer List</a>
-					</li>
+					<li class="competencies"><a href="<c:url value='/home'/>">Home</a></li>
+					<li class="competencies"><a href="<c:url value='/viewCustomer/list'/>">Customer List</a></li>
+					<li class="competencies"><a href="<c:url value='/editCustomer/'/>${customer.id}">Edit Customer</a></li>
+					<li class="competencies"><a href="<c:url value='/newQuote?customer.id='/>${customer.id}">New Quote</a></li>
 				</ul>
 			</div>
 			<br class="clear" />

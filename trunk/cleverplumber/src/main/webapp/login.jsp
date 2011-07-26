@@ -18,7 +18,7 @@
 </p>
 <p>
   <label for="j_password">Password:</label>
-  <input type="password" name="j_password" id="j_password" tabindex="2" maxlength="50" />&nbsp; &nbsp; &nbsp; <a href="sendNewPassword.do">Forgotton password</a>
+  <input type="password" name="j_password" id="j_password" tabindex="2" maxlength="50" />&nbsp; &nbsp; &nbsp;
 </p>
 
 <div id="login"><input type="submit" name="login" value="Login" tabindex="4" class="login" /></div><br class="clear" />

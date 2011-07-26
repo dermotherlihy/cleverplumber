@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="username" value="watford.plumber@gmail.com" />
-		<property name="password" value="Glenflesk1" />
+		<property name="host" value="${email.host}" />
+		<property name="username" value="${email.username}" />
+		<property name="password" value="${email.password}" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>

@@ -18,7 +18,7 @@
 						<form:label	for="customer.fullName" path="customer.fullName" cssErrorClass="error">Customer</form:label>
 					</td>
 					<td>
-						<form:input path="customer.firstName" readonly="true"/>			
+						<form:input path="customer.fullName" readonly="true"/>			
 					</td>
 				</tr>
 				<tr>	  		

@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cleverplumber.app.propertyeditor.BigDecimalPropertyEditor;
 import com.cleverplumber.app.propertyeditor.BrochureTypeEditor;
@@ -23,8 +25,21 @@ import com.dermotherlihy.quotation.model.QuoteType;
 
 @Controller
 @RequestMapping(value = "newQuote")
-public class NewQuoteController {
+public class CreateQuoteController {
 
+	
+	@ModelAttribute("quote")
+	public Quote getQuote(@RequestParam(required = false, value = "customer.id") Long customerId) {
+		 Quote quote = new Quote();
+		
+		 if (customerId != null){
+			 Customer customer = Customer.findCustomer(customerId);
+			 quote.setCustomer(customer);
+		 }
+		 return quote;
+		 
+	}
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(BigDecimal.class, null,
@@ -36,9 +51,8 @@ public class NewQuoteController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getCreateForm(Model model) {
-		model.addAttribute(new Quote());
-		model.addAttribute("customerList", Customer.findAllCustomers());
+	public String getCreateForm(Quote quote, Model model) {
+		model.addAttribute(quote);
 		model.addAttribute("companyList", Company.findAllCompanys());
 		model.addAttribute("quoteTypes", QuoteType.values());
 		model.addAttribute("brochureTypes", BrochureType.values());
@@ -47,6 +61,7 @@ public class NewQuoteController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(@Valid Quote quote, BindingResult result) {
+		
 		if (result.hasErrors()) {
 			return "createQuote";
 		}

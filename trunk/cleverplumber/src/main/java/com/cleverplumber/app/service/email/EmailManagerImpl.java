@@ -17,17 +17,23 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamSource;
 
+import com.dermotherlihy.quotation.model.BrochureType;
 import com.dermotherlihy.quotation.model.Quote;
 
 public class EmailManagerImpl implements EmailManager {
 
 	@Autowired
 	private MailEngine mailEngine;
-
+	
+	private String emailFrom;
+	
+	private String subject;
+	
 	public void sendEmail(Quote quote) throws RuntimeEmailException {
 
 		Set<Quote> quotes = new HashSet<Quote>();
@@ -55,7 +61,7 @@ public class EmailManagerImpl implements EmailManager {
 		model.put("quote", quote);
 
 		try {
-			mailEngine.sendHtmlAndPlainTextEmail(quote.getCustomer().getEmailAddress(), "watford.plumber@live.co.uk", "Quote", "quote.vm", model,
+			mailEngine.sendHtmlAndPlainTextEmail(quote.getCustomer().getEmailAddress(), emailFrom, subject, "quote.vm", model,
 					attachmentMap);
 		} catch (Exception e) {
 			throw new RuntimeEmailException(e.getMessage());
@@ -69,11 +75,28 @@ public class EmailManagerImpl implements EmailManager {
 	}
 
 	private void addBrochureIfNeeded(Quote quote, Map<String, InputStreamSource> attachmentMap) {
-		if(quote.getBrochureType()!= null){
-			if(quote.getBrochureType().getValue().equals(Integer.valueOf(0))){
+		if(BrochureType.NONE != quote.getBrochureType()){
+			if(BrochureType.WORCHESTER_BOILER == quote.getBrochureType()){
 				ClassPathResource worchesterBoilerResource = new ClassPathResource("greenstar-gas-boiler-brochure.pdf");
 				attachmentMap.put("greenstar-gas-boiler-brochure.pdf", worchesterBoilerResource);
 			}
 		}
 	}
+	
+	
+	public void setMailEngine(MailEngine mailEngine) {
+		this.mailEngine = mailEngine;
+	}
+	
+	@Value("#{'${email.from}'}")
+	public void setEmailFrom(String emailFrom) {
+		this.emailFrom = emailFrom;
+	}
+	@Value("#{'${email.subject}'}")
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	
+	
+
 }
