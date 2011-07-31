@@ -39,18 +39,18 @@
 				</tr>
 				<tr>	  		
 					<td>
-							<form:label for="labourCost" path="labourCost">Labour Cost</form:label>
+							<form:label for="labour" path="labour">Labour Cost</form:label>
 					</td>
 					<td>
-						<form:input path="labourCost" readonly="true"/>
+						<form:input path="labour" readonly="true"/>
 					</td>
 				</tr>
 				<tr>	  		
 					<td>
-						<form:label for="materialCost" path="materialCost">Materials Cost</form:label>
+						<form:label for="materials" path="materials">Materials Cost</form:label>
 					</td>
 					<td>
-						<form:input path="materialCost" readonly="true"/>
+						<form:input path="materials" readonly="true"/>
 					</td>
 				</tr>
 				
