@@ -17,14 +17,14 @@ public class NewCustomerController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCreateForm(Model model) {
 		model.addAttribute(new Customer());
-		return "createCustomer";
+		return "customer/createCustomer";
 	}
 
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(@Valid Customer customer, BindingResult result) {
 		if (result.hasErrors()) {
-			return "createCustomer";
+			return "customer/createCustomer";
 		}
 		customer.persist();
 		return "redirect:/viewCustomer/list";

@@ -16,11 +16,7 @@
 		<form:form modelAttribute="quote" method="post">
 		  	<fieldset>		
 				<form:hidden path="customer.id"/>
-				<p>
-					<form:label for="company" path="company" cssErrorClass="error">Company</form:label><br/>
-					<form:select path="company" items="${companyList}" itemValue="id" itemLabel="name"/>
-					<form:errors path="company" cssClass="errors"/>
-				</p>
+				<form:hidden path="company.id"/>
 				<p>
                   <form:label for="quoteType" path="quoteType" cssErrorClass="error">Quote Type</form:label><br/>
                   <form:select path="quoteType">
@@ -38,12 +34,12 @@
                   <form:errors path="brochureType" cssClass="errorMessage" />
                </p>
 				<p>	
-					<form:label for="labourCost" path="labourCost" cssErrorClass="error">Labour Cost</form:label><br/>
-					<form:input path="labourCost" /> <form:errors path="labourCost" />
+					<form:label for="labour" path="labour" cssErrorClass="error">Labour Cost</form:label><br/>
+					<form:input path="labour" /> <form:errors path="labour" />
 				</p>
 				<p>	
-					<form:label for="materialCost" path="materialCost" cssErrorClass="error">Materials Cost</form:label><br/>
-					<form:input path="materialCost" /> <form:errors path="labourCost" />
+					<form:label for="materials" path="materials" cssErrorClass="error">Materials Cost</form:label><br/>
+					<form:input path="materials" /> <form:errors path="materials" />
 				</p>
 				<p>	
 					<input type="submit" value="Create"/>

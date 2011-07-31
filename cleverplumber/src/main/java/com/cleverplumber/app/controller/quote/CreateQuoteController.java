@@ -4,12 +4,15 @@ import java.math.BigDecimal;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cleverplumber.app.propertyeditor.BigDecimalPropertyEditor;
 import com.cleverplumber.app.propertyeditor.BrochureTypeEditor;
 import com.cleverplumber.app.propertyeditor.QuoteTypeEditor;
+import com.cleverplumber.app.service.quote.QuoteManager;
 import com.dermotherlihy.quotation.model.BrochureType;
 import com.dermotherlihy.quotation.model.Company;
 import com.dermotherlihy.quotation.model.Customer;
@@ -27,6 +31,11 @@ import com.dermotherlihy.quotation.model.QuoteType;
 @RequestMapping(value = "newQuote")
 public class CreateQuoteController {
 
+	@Autowired
+	private QuoteManager quoteManager;
+	
+	private String vatRate;
+	
 	
 	@ModelAttribute("quote")
 	public Quote getQuote(@RequestParam(required = false, value = "customer.id") Long customerId) {
@@ -35,6 +44,7 @@ public class CreateQuoteController {
 		 if (customerId != null){
 			 Customer customer = Customer.findCustomer(customerId);
 			 quote.setCustomer(customer);
+			 quote.setCompany(Company.findAllCompanys().get(0));
 		 }
 		 return quote;
 		 
@@ -53,7 +63,6 @@ public class CreateQuoteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCreateForm(Quote quote, Model model) {
 		model.addAttribute(quote);
-		model.addAttribute("companyList", Company.findAllCompanys());
 		model.addAttribute("quoteTypes", QuoteType.values());
 		model.addAttribute("brochureTypes", BrochureType.values());
 		return "createQuote";
@@ -61,13 +70,18 @@ public class CreateQuoteController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(@Valid Quote quote, BindingResult result) {
-		
 		if (result.hasErrors()) {
 			return "createQuote";
 		}
-		quote.persist();
+		quoteManager.createQuote(quote);
 		return "redirect:/comment/" + quote.getId();
 	}
 
+	@Value("#{'${quote.vatRate}'}")
+	public void setVatRate(String vatRate) {
+		this.vatRate = vatRate;
+	}
+
+	
 	
 }

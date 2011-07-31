@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="0.9090909090909091"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="38"/>
+	<property name="ireport.y" value="790"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -50,14 +50,23 @@
 	<field name="brochureType" class="com.dermotherlihy.quotation.model.BrochureType">
 		<fieldDescription><![CDATA[brochureType]]></fieldDescription>
 	</field>
-	<field name="labourCost" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[labourCost]]></fieldDescription>
-	</field>
-	<field name="materialCost" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[materialCost]]></fieldDescription>
-	</field>
 	<field name="quoteType" class="com.dermotherlihy.quotation.model.QuoteType">
 		<fieldDescription><![CDATA[quoteType]]></fieldDescription>
+	</field>
+	<field name="vat" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[vat]]></fieldDescription>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[total]]></fieldDescription>
+	</field>
+	<field name="createdDate" class="java.util.Date">
+		<fieldDescription><![CDATA[createdDate]]></fieldDescription>
+	</field>
+	<field name="labour" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[labour]]></fieldDescription>
+	</field>
+	<field name="materials" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[materials]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -66,7 +75,12 @@
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band splitType="Stretch"/>
+		<band height="71" splitType="Stretch">
+			<image>
+				<reportElement x="119" y="0" width="315" height="71"/>
+				<imageExpression class="java.lang.String"><![CDATA["http://www.watfordplumbers.com/images/logo.png"]]></imageExpression>
+			</image>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>
@@ -194,21 +208,21 @@ Neil O’Sullivan]]></text>
 				<text><![CDATA[Labour]]></text>
 			</staticText>
 		</band>
-		<band height="138">
+		<band height="158">
 			<rectangle>
-				<reportElement x="17" y="17" width="514" height="97"/>
+				<reportElement x="20" y="18" width="511" height="130"/>
 				<graphicElement>
 					<pen lineWidth="2.0"/>
 				</graphicElement>
 			</rectangle>
 			<line>
-				<reportElement x="17" y="46" width="514" height="1"/>
+				<reportElement x="20" y="46" width="511" height="1"/>
 			</line>
 			<line>
-				<reportElement x="17" y="81" width="514" height="1"/>
+				<reportElement x="20" y="81" width="511" height="1"/>
 			</line>
 			<line>
-				<reportElement x="171" y="17" width="1" height="97"/>
+				<reportElement x="171" y="18" width="2" height="130"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
@@ -228,46 +242,66 @@ Neil O’Sullivan]]></text>
 				<text><![CDATA[Labour]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="94" width="100" height="20"/>
+				<reportElement x="30" y="128" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="232" y="26" width="100" height="20"/>
+				<reportElement x="230" y="26" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{labourCost}]]></textFieldExpression>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{materials}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="232" y="61" width="100" height="20"/>
+				<reportElement x="230" y="61" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{materialCost}]]></textFieldExpression>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{labour}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="223" y="26" width="9" height="20"/>
+				<reportElement x="221" y="26" width="9" height="20"/>
 				<textElement/>
 				<text><![CDATA[£]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="223" y="61" width="9" height="20"/>
+				<reportElement x="221" y="61" width="9" height="20"/>
 				<textElement/>
 				<text><![CDATA[£]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="223" y="94" width="9" height="20"/>
+				<reportElement x="221" y="128" width="9" height="20"/>
 				<textElement/>
 				<text><![CDATA[£]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="232" y="94" width="100" height="20"/>
+				<reportElement x="230" y="128" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{labourCost}.add($F{materialCost})]]></textFieldExpression>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="20" y="114" width="511" height="1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="30" y="94" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="95" width="9" height="20"/>
+				<textElement/>
+				<text><![CDATA[£]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="95" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{vat}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="230">
+		<band height="223">
 			<staticText>
-				<reportElement x="17" y="13" width="516" height="217"/>
+				<reportElement x="17" y="13" width="516" height="157"/>
 				<textElement/>
 				<text><![CDATA[To accept this quote a 50% deposit will be required in cleared funds before confirming an appointment.  The remaining monies are due upon completion of works.
 We accept cash, bank transfer and cheque.
@@ -277,29 +311,24 @@ Sort Code : 20-91-79
 Account Number : 53068641
 
 
-Please send cheques to (Please clearly state your name on reverse side of cheque):
-
-Watford Plumbers,
-17 Bramshaw Gardens,
-Watford,
-WD19 6XR
+Please send cheques address at top of quote. (Please clearly state your name on reverse side of cheque):
 
 Estimate valid for 3 months from date issued]]></text>
 			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="105" splitType="Stretch">
+		<band height="51" splitType="Stretch">
 			<image>
-				<reportElement x="61" y="12" width="455" height="91"/>
-				<imageExpression class="java.lang.String"><![CDATA["http://www.watfordplumbers.com/images/logo.png"]]></imageExpression>
+				<reportElement x="19" y="0" width="74" height="48"/>
+				<imageExpression class="java.lang.String"><![CDATA["https://lh3.googleusercontent.com/-cej55j1qdFY/TjWZu32K3zI/AAAAAAAAAbE/fC_vo7FXNaA/put_on_picassa.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="8" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="4" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>
