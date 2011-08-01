@@ -24,7 +24,7 @@
 	</tr>
 	<tr>
 		<td>
-			<p>Neil O'Sullivan</p>
+			<p>${quote.createdBy.firstName}  ${quote.createdBy.lastName}</p>
 		</td>
 	</tr>
 </table>
