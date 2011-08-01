@@ -18,11 +18,12 @@
 		<intercept-url pattern="/**" access="ROLE_USER" />
 	</http>
 
-	<authentication-manager alias="authenticationManager">
-		<authentication-provider>
+ 	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="employeeManager" />
+		<!-- >authentication-provider>
 			<user-service>
 				<user name="neil" password="neil" authorities="ROLE_USER" />
 			</user-service>
-		</authentication-provider>
+		</authentication-provider-->
 	</authentication-manager>
 </beans:beans>

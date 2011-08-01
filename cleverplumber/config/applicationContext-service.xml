@@ -6,4 +6,5 @@
 	
 	<bean id="emailManager" class="com.cleverplumber.app.service.email.EmailManagerImpl"/>
 	<bean id="quoteManager" class="com.cleverplumber.app.service.quote.QuoteManagerImpl"/>
+	<bean id="employeeManager" class="com.cleverplumber.app.service.employee.EmployeeManagerImpl"/>
 </beans>

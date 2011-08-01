@@ -1,6 +1,7 @@
 package com.cleverplumber.app.controller.quote;
 
 import java.math.BigDecimal;
+import java.security.Principal;
 
 import javax.validation.Valid;
 
@@ -12,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cleverplumber.app.propertyeditor.BigDecimalPropertyEditor;
 import com.cleverplumber.app.propertyeditor.BrochureTypeEditor;
 import com.cleverplumber.app.propertyeditor.QuoteTypeEditor;
+import com.cleverplumber.app.service.employee.EmployeeManager;
 import com.cleverplumber.app.service.quote.QuoteManager;
 import com.dermotherlihy.quotation.model.BrochureType;
 import com.dermotherlihy.quotation.model.Company;
@@ -34,17 +35,21 @@ public class CreateQuoteController {
 	@Autowired
 	private QuoteManager quoteManager;
 	
+	@Autowired
+	private EmployeeManager employeeManager;
+	
 	private String vatRate;
 	
 	
 	@ModelAttribute("quote")
-	public Quote getQuote(@RequestParam(required = false, value = "customer.id") Long customerId) {
+	public Quote getQuote(@RequestParam(required = false, value = "customer.id") Long customerId, Principal principal) {
 		 Quote quote = new Quote();
 		
 		 if (customerId != null){
 			 Customer customer = Customer.findCustomer(customerId);
 			 quote.setCustomer(customer);
 			 quote.setCompany(Company.findAllCompanys().get(0));
+			 quote.setCreatedBy(employeeManager.findEmployeeByUserName(principal.getName()));
 		 }
 		 return quote;
 		 
