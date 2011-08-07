@@ -1,4 +1,4 @@
-package com.cleverplumber.app.controller;
+package com.cleverplumber.app.controller.company;
 
 import java.util.List;
 
@@ -16,24 +16,24 @@ import com.dermotherlihy.quotation.model.Company;
 
 @Controller
 @RequestMapping(value="company")
-public class CompanyController {
+public class CreateCompanyController {
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
 		List<Company> companies = Company.findAllCompanys();
 		if(Company.findAllCompanys().size() > 0){
 			model.addAttribute(companies.get(0));
-			return "viewCompany";
+			return "company/viewCompany";
 		}else{
 			model.addAttribute(new Company());
-			return "createCompany";
+			return "company/createCompany";
 		}
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String create(@Valid Company company, BindingResult result) {
 		if (result.hasErrors()) {
-			return "createCompany";
+			return "company/createCompany";
 		}
 		company.persist();
 		return "redirect:company/" + company.getId();
@@ -46,7 +46,7 @@ public class CompanyController {
 			throw new ResourceNotFoundException(id);
 		}
 		model.addAttribute(company);
-		return "viewCompany";
+		return "company/viewCompany";
 	}
 
 }

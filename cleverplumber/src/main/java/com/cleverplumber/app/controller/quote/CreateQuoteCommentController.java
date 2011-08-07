@@ -1,6 +1,7 @@
 package com.cleverplumber.app.controller.quote;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,8 +38,14 @@ public class CreateQuoteCommentController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String createComment(Comment comment, BindingResult result, Quote quote, HttpServletRequest request, Model model) {
-
+	public String createComment(@Valid Comment comment, BindingResult result, Quote quote, HttpServletRequest request) {
+	    
+		String successView = "redirect:/comment/"+ quote.getId();
+	    
+		if (result.hasErrors()) {
+			return "addQuoteComment";
+		}
+		
 		if (request.getParameter("finish") != null) {
 			emailManager.sendEmail(quote);
 			return "redirect:/viewQuote/" + quote.getId();
@@ -46,8 +53,6 @@ public class CreateQuoteCommentController {
 
 		comment.setQuote(quote);
 		comment.persist();
-		quote.getComments().add(comment);
-		model.addAttribute(quote);
-		return "addQuoteComment";
+		return successView;
 	}
 }

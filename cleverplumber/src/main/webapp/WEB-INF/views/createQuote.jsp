@@ -35,11 +35,11 @@
                </p>
 				<p>	
 					<form:label for="labour" path="labour" cssErrorClass="error">Labour Cost</form:label><br/>
-					<form:input path="labour" /> <form:errors path="labour" />
+					<form:input path="labour" /> <form:errors path="labour" cssClass="errorMessage" />
 				</p>
 				<p>	
 					<form:label for="materials" path="materials" cssErrorClass="error">Materials Cost</form:label><br/>
-					<form:input path="materials" /> <form:errors path="materials" />
+					<form:input path="materials" /> <form:errors path="materials"  cssClass="errorMessage"/>
 				</p>
 				<p>	
 					<input type="submit" value="Create"/>
