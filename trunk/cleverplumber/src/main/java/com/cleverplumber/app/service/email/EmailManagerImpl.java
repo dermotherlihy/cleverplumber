@@ -75,12 +75,22 @@ public class EmailManagerImpl implements EmailManager {
 	}
 
 	private void addBrochureIfNeeded(Quote quote, Map<String, InputStreamSource> attachmentMap) {
-		if(BrochureType.NONE != quote.getBrochureType()){
-			if(BrochureType.WORCHESTER_BOILER == quote.getBrochureType()){
-				ClassPathResource worchesterBoilerResource = new ClassPathResource("greenstar-gas-boiler-brochure.pdf");
-				attachmentMap.put("greenstar-gas-boiler-brochure.pdf", worchesterBoilerResource);
+			ClassPathResource attachmentResource = null;
+			switch(quote.getBrochureType()){
+			case WORCHESTER_BOILER:
+				attachmentResource= new ClassPathResource("greenstar-gas-boiler-brochure.pdf");
+				attachmentMap.put("greenstar-gas-boiler-brochure.pdf", attachmentResource);
+				break;
+			case VAILLIANT_BROCHURE:
+				attachmentResource = new ClassPathResource("vaillaint.pdf");
+				attachmentMap.put("vaillaint-consumer-brochure.pdf", attachmentResource);
+				break;
+			case GRUNDFOS_PUMP:
+				attachmentResource = new ClassPathResource("grundfos-pump.pdf");
+				attachmentMap.put("grundfos-pump-brochure.pdf", attachmentResource);
+				break;
+			default:
 			}
-		}
 	}
 	
 	

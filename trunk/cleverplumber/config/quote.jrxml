@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="790"/>
+	<property name="ireport.y" value="12"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -38,35 +38,41 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="company" class="com.dermotherlihy.quotation.model.Company">
-		<fieldDescription><![CDATA[company]]></fieldDescription>
-	</field>
-	<field name="customer" class="com.dermotherlihy.quotation.model.Customer">
-		<fieldDescription><![CDATA[customer]]></fieldDescription>
-	</field>
 	<field name="comments" class="java.util.Set">
 		<fieldDescription><![CDATA[comments]]></fieldDescription>
 	</field>
-	<field name="brochureType" class="com.dermotherlihy.quotation.model.BrochureType">
-		<fieldDescription><![CDATA[brochureType]]></fieldDescription>
+	<field name="company" class="com.dermotherlihy.quotation.model.Company">
+		<fieldDescription><![CDATA[company]]></fieldDescription>
 	</field>
-	<field name="quoteType" class="com.dermotherlihy.quotation.model.QuoteType">
-		<fieldDescription><![CDATA[quoteType]]></fieldDescription>
-	</field>
-	<field name="vat" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[vat]]></fieldDescription>
-	</field>
-	<field name="total" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[total]]></fieldDescription>
+	<field name="createdBy" class="com.dermotherlihy.quotation.model.Employee">
+		<fieldDescription><![CDATA[createdBy]]></fieldDescription>
 	</field>
 	<field name="createdDate" class="java.util.Date">
 		<fieldDescription><![CDATA[createdDate]]></fieldDescription>
+	</field>
+	<field name="customer" class="com.dermotherlihy.quotation.model.Customer">
+		<fieldDescription><![CDATA[customer]]></fieldDescription>
 	</field>
 	<field name="labour" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[labour]]></fieldDescription>
 	</field>
 	<field name="materials" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[materials]]></fieldDescription>
+	</field>
+	<field name="quoteType" class="com.dermotherlihy.quotation.model.QuoteType">
+		<fieldDescription><![CDATA[quoteType]]></fieldDescription>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[total]]></fieldDescription>
+	</field>
+	<field name="vat" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[vat]]></fieldDescription>
+	</field>
+	<field name="vatRate" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[vatRate]]></fieldDescription>
+	</field>
+	<field name="brochureType" class="com.dermotherlihy.quotation.model.BrochureType">
+		<fieldDescription><![CDATA[brochureType]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -75,7 +81,7 @@
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="71" splitType="Stretch">
+		<band height="94" splitType="Stretch">
 			<image>
 				<reportElement x="119" y="0" width="315" height="71"/>
 				<imageExpression class="java.lang.String"><![CDATA["http://www.watfordplumbers.com/images/logo.png"]]></imageExpression>
@@ -86,94 +92,131 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="586" splitType="Stretch">
+		<band height="581" splitType="Stretch">
 			<staticText>
-				<reportElement x="19" y="321" width="520" height="243"/>
+				<reportElement x="17" y="388" width="522" height="63"/>
 				<textElement/>
-				<text><![CDATA[Thank you for the opportunity to survey your property to discuss your requirements and provide a quotation for your project.
-
-Watford Plumbers pride themselves on combining appropriate heat source technologies, products and heating system controls to deliver cost effective, energy efficient, space and water heating
-solutions.
-
-We offer a wide range of traditional plumbing and heating services including the supply and installation of high efficiency condensing boilers, TRV’s, thermostats and programmers, alongside
+				<text><![CDATA[We offer a wide range of traditional plumbing and heating services including the supply and installation of high efficiency condensing boilers, TRV’s, thermostats and programmers, alongside
 renewable and sustainable options, such as solar panels which harness the constant free energy available from the sun, heat pumps integrated with under floor heating, and zone control which
-provides full control over every aspect of any heating system
-
-If you have any further questions or would like to proceed and book in an installation date please do not hesitate to contact us on 01923 883 711 or watfordplumber@live.co.uk
-
-Kind Regards
-Neil O’Sullivan]]></text>
+provides full control over every aspect of any heating system]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="400" y="70" width="139" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="400" y="55" width="139" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[(""+$F{company}.getAddressLine2()).trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="90" width="139" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="400" y="75" width="139" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[(""+$F{company}.getAddressLine3()).trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="110" width="139" height="20"/>
+				<reportElement x="400" y="95" width="139" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[(""+$F{company}.getPostcode()).trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="130" width="139" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="400" y="115" width="139" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[(""+$F{company}.getPhoneNumber()).trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="150" width="139" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="400" y="135" width="139" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[(""+$F{company}.getEmailAddress()).trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="17" y="170" width="204" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="17" y="155" width="204" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getFullName().trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="17" y="190" width="204" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="17" y="175" width="204" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getAddressLine1().trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="17" y="210" width="204" height="20"/>
+				<reportElement x="17" y="195" width="204" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getAddressLine2().trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="17" y="230" width="204" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="17" y="215" width="204" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getAddressLine3().trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="17" y="250" width="204" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="17" y="235" width="204" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getPostcode().trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="50" width="139" height="20" isRemoveLineWhenBlank="true"/>
+				<reportElement x="400" y="35" width="139" height="20" isRemoveLineWhenBlank="true"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[(""+$F{company}.getAddressLine1()).trim()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="19" y="30" width="154" height="20" forecolor="#9999FF"/>
+				<reportElement x="17" y="15" width="154" height="20" forecolor="#6666FF"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getName()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="19" y="301" width="381" height="20"/>
+				<reportElement x="17" y="278" width="381" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{customer}.getFirstName()+","]]></textFieldExpression>
 			</textField>
 			<break>
 				<reportElement x="0" y="575" width="100" height="1"/>
 			</break>
+			<staticText>
+				<reportElement x="17" y="507" width="100" height="17"/>
+				<textElement/>
+				<text><![CDATA[Kind regards,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="17" y="524" width="239" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{createdBy}.getFirstName() + " " +$F{createdBy}.getLastName()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="467" width="519" height="14"/>
+				<textElement/>
+				<text><![CDATA[If you have any further questions or would like to proceed and book in an installation date please do not hesitate to ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="481" width="65" height="14"/>
+				<textElement/>
+				<text><![CDATA[contact us on
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="481" width="69" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getPhoneNumber()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="151" y="481" width="11" height="14"/>
+				<textElement/>
+				<text><![CDATA[or]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="162" y="481" width="177" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getEmailAddress()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="308" width="522" height="38"/>
+				<textElement/>
+				<text><![CDATA[Thank you for the opportunity to survey your property to discuss your requirements and provide a quotation for your project.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="346" width="522" height="42"/>
+				<textElement/>
+				<text><![CDATA[Watford Plumbers pride themselves on combining appropriate heat source technologies, products and heating  system controls to deliver cost effective, energy efficient, space and water heating solutions.]]></text>
+			</staticText>
 		</band>
 		<band height="126">
 			<componentElement>
@@ -208,96 +251,96 @@ Neil O’Sullivan]]></text>
 				<text><![CDATA[Labour]]></text>
 			</staticText>
 		</band>
-		<band height="158">
+		<band height="116">
 			<rectangle>
-				<reportElement x="20" y="18" width="511" height="130"/>
+				<reportElement x="20" y="20" width="511" height="83"/>
 				<graphicElement>
 					<pen lineWidth="2.0"/>
 				</graphicElement>
 			</rectangle>
 			<line>
-				<reportElement x="20" y="46" width="511" height="1"/>
+				<reportElement x="20" y="40" width="511" height="1"/>
 			</line>
 			<line>
-				<reportElement x="20" y="81" width="511" height="1"/>
+				<reportElement x="20" y="60" width="511" height="1"/>
 			</line>
 			<line>
-				<reportElement x="171" y="18" width="2" height="130"/>
+				<reportElement x="173" y="20" width="1" height="83"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="30" y="27" width="100" height="19"/>
+				<reportElement x="30" y="22" width="100" height="19"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Materials]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" x="30" y="61" width="100" height="20"/>
+				<reportElement positionType="FixRelativeToBottom" x="30" y="43" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Labour]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="128" width="100" height="20"/>
+				<reportElement x="30" y="83" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="230" y="26" width="100" height="20"/>
+				<reportElement x="202" y="23" width="100" height="15"/>
 				<textElement/>
 				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{materials}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="230" y="61" width="100" height="20"/>
+				<reportElement x="202" y="43" width="100" height="15"/>
 				<textElement/>
 				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{labour}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="221" y="26" width="9" height="20"/>
+				<reportElement x="193" y="43" width="9" height="15"/>
 				<textElement/>
 				<text><![CDATA[£]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="221" y="61" width="9" height="20"/>
-				<textElement/>
-				<text><![CDATA[£]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="221" y="128" width="9" height="20"/>
+				<reportElement x="193" y="83" width="9" height="15"/>
 				<textElement/>
 				<text><![CDATA[£]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="230" y="128" width="100" height="20"/>
+				<reportElement x="202" y="83" width="100" height="15"/>
 				<textElement/>
 				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="20" y="114" width="511" height="1"/>
+				<reportElement x="20" y="80" width="511" height="1"/>
 			</line>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" x="30" y="94" width="100" height="20"/>
+				<reportElement positionType="FixRelativeToBottom" x="30" y="63" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[VAT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="221" y="95" width="9" height="20"/>
+				<reportElement x="193" y="63" width="9" height="15"/>
 				<textElement/>
 				<text><![CDATA[£]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="230" y="95" width="100" height="20"/>
+				<reportElement x="202" y="63" width="100" height="15"/>
 				<textElement/>
 				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{vat}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="193" y="23" width="9" height="15"/>
+				<textElement/>
+				<text><![CDATA[£]]></text>
+			</staticText>
 		</band>
 		<band height="223">
 			<staticText>
@@ -318,15 +361,40 @@ Estimate valid for 3 months from date issued]]></text>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="51" splitType="Stretch">
+		<band height="69" splitType="Stretch">
 			<image>
-				<reportElement x="19" y="0" width="74" height="48"/>
+				<reportElement x="20" y="0" width="76" height="59"/>
 				<imageExpression class="java.lang.String"><![CDATA["https://lh3.googleusercontent.com/-cej55j1qdFY/TjWZu32K3zI/AAAAAAAAAbE/fC_vo7FXNaA/put_on_picassa.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="464" y="5" width="67" height="54"/>
+				<imageExpression class="java.lang.String"><![CDATA["https://lh4.googleusercontent.com/-fCNpaSQ9sSo/TjmYK9-_BhI/AAAAAAAAAcA/E1_HqsnxKoU/s144/worcester.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band splitType="Stretch"/>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="-371" y="-10" width="154" height="20" forecolor="#9999FF"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getName()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="10" width="513" height="19"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getName()+", "+ $F{company}.getAddressLine1()+
+", "+$F{company}.getAddressLine2()+
+", "+$F{company}.getAddressLine3()+
+", "+$F{company}.getPostcode()+
+".  Registered In England, Company Reg No: " +$F{company}.getRegisteredNumber()+
+"  Tel No: "+$F{company}.getPhoneNumber()+
+"  Vat No: "+$F{company}.getVatNumber()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
