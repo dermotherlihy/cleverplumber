@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="12"/>
+	<property name="ireport.y" value="369"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -186,25 +186,15 @@ provides full control over every aspect of any heating system]]></text>
 				<text><![CDATA[If you have any further questions or would like to proceed and book in an installation date please do not hesitate to ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="17" y="481" width="65" height="14"/>
+				<reportElement x="17" y="481" width="66" height="14"/>
 				<textElement/>
 				<text><![CDATA[contact us on
 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="82" y="481" width="69" height="14"/>
+				<reportElement x="83" y="481" width="453" height="14"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getPhoneNumber()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="151" y="481" width="11" height="14"/>
-				<textElement/>
-				<text><![CDATA[or]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="162" y="481" width="177" height="14"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getEmailAddress()]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getPhoneNumber().trim() +" or "+$F{company}.getEmailAddress()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="17" y="308" width="522" height="38"/>
@@ -350,8 +340,8 @@ provides full control over every aspect of any heating system]]></text>
 We accept cash, bank transfer and cheque.
 
 Bank Account Details (please use name as reference):
-Sort Code : 20-91-79
-Account Number : 53068641
+Sort Code : 30-99-21
+Account Number : 38237768
 
 
 Please send cheques address at top of quote. (Please clearly state your name on reverse side of cheque):
