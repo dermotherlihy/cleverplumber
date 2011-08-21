@@ -7,16 +7,13 @@ import java.util.Set;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cleverplumber.app.exception.ResourceNotFoundException;
 import com.dermotherlihy.quotation.model.Quote;
 
 @Controller
-@RequestMapping(value = "viewQuote")
 public class ViewQuoteController {
 	
 	@ModelAttribute("quote")
@@ -27,24 +24,9 @@ public class ViewQuoteController {
 		}
 		return quote;
 	}
-	
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public String getView(@PathVariable Long id, Model model) {
-		Quote quote = Quote.findQuote(id);
-		if (quote == null) {
-			throw new ResourceNotFoundException(id);
-		}
-		model.addAttribute(quote);
-		return "viewQuote";
-	}
-	
 
-	@RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET)
-	public String getPDFView(@PathVariable Long id, Model model) {
-		Quote quote = Quote.findQuote(id);
-		if (quote == null) {
-			throw new ResourceNotFoundException(id);
-		}
+	@RequestMapping(value = "/viewQuote/pdf.do", method = RequestMethod.GET)
+	public String getPDFView(Quote quote, Model model) {
 		Set<Quote> quoteList = new HashSet<Quote>();
 		quoteList.add(quote);
 		model.addAttribute(quoteList);
@@ -52,13 +34,13 @@ public class ViewQuoteController {
 		return "viewQuotePDF";
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/viewQuote.do", method = RequestMethod.GET)
 	public String getQuote(Quote quote, Model model) {
 		model.addAttribute(quote);
 		return "viewQuote";
 	}
 	
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = "/viewQuote/list.do")
 	public String getQuotes(Model model) {
 		List<Quote> quoteList = Quote.findAllQuotes();
 		model.addAttribute("quoteList", quoteList);

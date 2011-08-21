@@ -6,7 +6,6 @@ import java.security.Principal;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,7 +28,7 @@ import com.dermotherlihy.quotation.model.Quote;
 import com.dermotherlihy.quotation.model.QuoteType;
 
 @Controller
-@RequestMapping(value = "newQuote")
+@RequestMapping(value = "/newQuote.do")
 public class CreateQuoteController {
 
 	@Autowired
@@ -37,9 +36,6 @@ public class CreateQuoteController {
 	
 	@Autowired
 	private EmployeeManager employeeManager;
-	
-	private String vatRate;
-	
 	
 	@ModelAttribute("quote")
 	public Quote getQuote(@RequestParam(required = false, value = "customer.id") Long customerId, Principal principal) {
@@ -79,13 +75,9 @@ public class CreateQuoteController {
 			return "createQuote";
 		}
 		quoteManager.createQuote(quote);
-		return "redirect:/comment/" + quote.getId();
+		return "redirect:/comment.do?quote.id=" + quote.getId();
 	}
 
-	@Value("#{'${quote.vatRate}'}")
-	public void setVatRate(String vatRate) {
-		this.vatRate = vatRate;
-	}
 
 	
 	
