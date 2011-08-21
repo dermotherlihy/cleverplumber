@@ -11,10 +11,10 @@
 <div class="container">  
 	<hr>	
 	<ul>
-		<li><a href="viewCustomer/list">Customers</a></li>
-		<li><a href="viewQuote/list">Quotes</a></li>
-		<li><a href="company">Company Information</a></li>
-		<li class="logout"><a href="logout">Logout</a></li>
+		<li><a href="viewCustomer/list.do">Customers</a></li>
+		<li><a href="viewQuote/list.do">Quotes</a></li>
+		<li><a href="company.do">Company Information</a></li>
+		<li class="logout"><a href="logout.do">Logout</a></li>
 	</ul>
 </div>
 </body>

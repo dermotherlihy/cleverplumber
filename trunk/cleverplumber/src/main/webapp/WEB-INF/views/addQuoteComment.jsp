@@ -34,7 +34,7 @@
 					<td>
 					   <c:forEach items="${quote.comments}" var="comment">
                            	 <c:out value="${comment.text}"/>&nbsp
-                           	 <a href="edit/${comment.id}">Edit</a><br/>
+                           	 <a href="<c:url value='/comment/edit.do?id='/>${comment.id}">Edit</a><br/>
                        </c:forEach>
                 	</td>
 				</tr>
@@ -52,9 +52,9 @@
 		<div class="pageMenu">
 			<div class="pageMenuInner">
 				<ul>
-					<li class="competencies"><a href="<c:url value='/home'/>">Home</a></li>
-					<li class="competencies"><a href="<c:url value='/viewQuote/list'/>">Quote List</a></li>
-					<li class="competencies"><a href="<c:url value='/viewQuote/pdf/'/>${quote.id}">View PDF</a></li>
+					<li class="competencies"><a href="<c:url value='/home.do'/>">Home</a></li>
+					<li class="competencies"><a href="<c:url value='/viewQuote/list.do'/>">Quote List</a></li>
+					<li class="competencies"><a href="<c:url value='/viewQuote/pdf.do?id='/>${quote.id}">View PDF</a></li>
 				</ul>
 			</div>
 			<br class="clear" />
