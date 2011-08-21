@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.dermotherlihy.quotation.model.Customer;
 
 @Controller
-@RequestMapping(value = "customer")
+@RequestMapping(value = "/customer.do")
 public class NewCustomerController {
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -27,6 +27,6 @@ public class NewCustomerController {
 			return "customer/createCustomer";
 		}
 		customer.persist();
-		return "redirect:/viewCustomer/list";
+		return "redirect:/viewCustomer/list.do";
 	}
 }

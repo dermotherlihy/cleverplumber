@@ -8,27 +8,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cleverplumber.app.service.email.EmailManager;
 import com.dermotherlihy.quotation.model.Comment;
 import com.dermotherlihy.quotation.model.Quote;
 
 @Controller
-@RequestMapping(value = "/comment/{quoteId}")
+@RequestMapping(value = "/comment.do")
 public class CreateQuoteCommentController {
 
 	@Autowired
 	private EmailManager emailManager;
 	
-	
 	@ModelAttribute("quote")
-	public Quote getQuote(@PathVariable Long quoteId) {
-		return Quote.findQuote(quoteId);
+	public Quote getQuote(@RequestParam(required = false, value = "quote.id") Long quoteId) {
+		Quote quote = null;
+		if (quoteId != null) {
+			quote = Quote.findQuote(quoteId);
+		}
+		return quote;
 	}
-
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String addCommentToQuote(Quote quote, Model model) {
 		Comment comment = new Comment();
@@ -40,7 +43,7 @@ public class CreateQuoteCommentController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String createComment(@Valid Comment comment, BindingResult result, Quote quote, HttpServletRequest request) {
 	    
-		String successView = "redirect:/comment/"+ quote.getId();
+		String successView = "redirect:/comment.do?quote.id="+ quote.getId();
 	    
 		if (result.hasErrors()) {
 			return "addQuoteComment";
@@ -48,7 +51,7 @@ public class CreateQuoteCommentController {
 		
 		if (request.getParameter("finish") != null) {
 			emailManager.sendEmail(quote);
-			return "redirect:/viewQuote/" + quote.getId();
+			return "redirect:/viewQuote.do?id=" + quote.getId();
 		}
 
 		comment.setQuote(quote);
