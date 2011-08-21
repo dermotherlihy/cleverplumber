@@ -12,7 +12,7 @@
 		Create Company
 	</h1>
 
-		<form:form modelAttribute="company" action="company" method="post">
+		<form:form modelAttribute="company" action="company.do" method="post">
 				<table class="form">
 					<tr>
 						<td width="30%">

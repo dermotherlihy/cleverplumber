@@ -12,7 +12,7 @@
 	<h1>
 		Edit Company
 	</h1>
-		<form:form modelAttribute="company" action="editCompany" method="post">
+		<form:form modelAttribute="company" action="editCompany.do" method="post">
 			<form:hidden path="id" /> 	
 			<table class="form">
 					<tr>
