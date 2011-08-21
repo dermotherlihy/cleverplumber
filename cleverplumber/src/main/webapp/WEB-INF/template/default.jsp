@@ -18,6 +18,9 @@
 <script type="text/javascript" src="<c:url value='/scripts/jquery.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/scripts/ui.core.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/scripts/jquery.asmselect.js'/>"></script>
+<link rel="icon" href="<c:url value='/images/favicon.ico'/>" type="image/x-icon">
+<link rel="shortcut icon" href="<c:url value='/images/favicon.ico'/>"type="image/x-icon"> 
+
 <decorator:head />
 </head>
 <body>
