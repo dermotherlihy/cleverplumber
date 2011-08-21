@@ -100,8 +100,8 @@
 		<div class="pageMenu">
 			<div class="pageMenuInner">
 				<ul>
-					<li class="competencies"><a href="<c:url value='/home'/>">Home</a></li>
-					<li class="competencies"><a href="<c:url value='/editCompany/'/>${company.id}">Edit</a></li>
+					<li class="competencies"><a href="<c:url value='/home.do'/>">Home</a></li>
+					<li class="competencies"><a href="<c:url value='/editCompany.do?id='/>${company.id}">Edit</a></li>
 				</ul>
 			</div>
 			<br class="clear" />
