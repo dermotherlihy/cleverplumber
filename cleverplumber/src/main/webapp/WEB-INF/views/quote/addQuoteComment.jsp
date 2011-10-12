@@ -8,33 +8,52 @@
 	</head>
 
 	<body>
-			<form:form commandName="comment">
-            <form:hidden path="quote.id"/>
+			<form:form commandName="quote">
+			<form:input type ="hidden" path="id"/>
 			<table class="form">
-				<tr>
-					<td valign="top">
-						Add Comment
+				<tr>	  		
+					<td>
+						<b>Vat</b>
 					</td>
 					<td>
-						<form:textarea rows="5" cssClass="inputmedium" path="text" />
-						<form:errors path="text" cssClass="errorMessage" />
+						<form:input path="vat" readonly="true"/>
+					</td>
+				</tr>
+				<tr>	  		
+					<td>
+						<b>Total</b>
+					</td>
+					<td>
+						<form:input path="total" readonly="true"/>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<b>Add Comment</b>
+					</td>
+					<td>
+						<textarea rows="5" class="inputlarge" name="newComment"></textarea>
+						<c:if test="${!empty requestScope.commentError}">
+						 	<span class="errorMessage">${requestScope.commentError}</span>
+						</c:if>
 					</td>
 				</tr>
 				<tr>
 					<td />
 					<td>
 						<input type="submit" class="button" name="save" value="Add" />
-						<input type="submit" class="button" name="finish" value="Finish" />
+						<input type="submit" class="button" name="finish" value="Send Quote" />
 					</td>
 				</tr>
 				<tr style="width: 20%">
 					<td valign="top">
-						Comments
+						<b>Comments</b>
 					</td>
 					<td>
 					   <c:forEach items="${quote.comments}" var="comment">
                            	 <c:out value="${comment.text}"/>&nbsp
-                           	 <a href="<c:url value='/comment/edit.do?id='/>${comment.id}">Edit</a><br/>
+                           	 <a href="<c:url value='/comment/edit.do?id='/>${comment.id}&quote.id=${quote.id}">Edit</a>
+                           	 <a href="<c:url value='/comment/delete.do?id='/>${comment.id}&quote.id=${quote.id}">Delete</a><br/>
                        </c:forEach>
                 	</td>
 				</tr>

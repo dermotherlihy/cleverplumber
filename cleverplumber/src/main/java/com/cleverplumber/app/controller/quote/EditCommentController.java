@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dermotherlihy.quotation.model.Comment;
+import com.dermotherlihy.quotation.model.Quote;
 
 @Controller
 @RequestMapping(value = "/comment/edit.do")
-public class EditQuoteCommentController {
+public class EditCommentController {
 
 
+	
 	@ModelAttribute("comment")
 	public Comment getComment(@RequestParam(required = false, value = "id") Long commentId) {
 		Comment comment = null;
@@ -26,16 +28,24 @@ public class EditQuoteCommentController {
 		return comment;
 	}
 
+	@ModelAttribute("quote.id")
+	public Long getQuote(@RequestParam(required = false, value = "quote.id") Long quoteId) {
+		return quoteId;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public String editComment(Comment comment, Model model) {
+	public String editComment(Comment comment, Quote quote,Model model) {
+		model.addAttribute(quote);
 		model.addAttribute(comment);
-		return "editQuoteComment";
+		return "quote/editQuoteComment";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String submitComment(Comment comment, BindingResult result, HttpServletRequest request, Model model) {
-
-		String successUrl = "redirect:/comment.do?quote.id=" + comment.getQuote().getId();
+	public String submitComment(Comment comment, BindingResult result, @RequestParam(required = true, value = "quote.id") Long quoteId, HttpServletRequest request, Model model) {
+		String successUrl = "redirect:/comment.do?quote.id=" + quoteId;
+		if (request.getParameter("cancel") != null) {
+			return "redirect:/comment.do?quote.id=" + quoteId;
+		}
 		comment.persist();
 		return successUrl;
 	}

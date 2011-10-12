@@ -54,9 +54,26 @@
 					</td>
 				</tr>
 				
+				<tr>	  		
+					<td>
+						<form:label for="vat" path="materials">Vat</form:label>
+					</td>
+					<td>
+						<form:input path="vat" readonly="true"/>
+					</td>
+				</tr>
+				<tr>	  		
+					<td>
+						<form:label for="total" path="total">Total</form:label>
+					</td>
+					<td>
+						<form:input path="total" readonly="true"/>
+					</td>
+				</tr>
+				
 				<tr style="width: 20%">
 					<td valign="top">
-						Comments
+						<form:label for="comments" path="comments">Comments</form:label>
 					</td>
 					<td>
 					   <c:forEach items="${quote.comments}" var="comment">
@@ -74,6 +91,7 @@
 				<ul>
 					<li class="competencies"><a href="<c:url value='/home.do'/>">Home</a></li>
 					<li class="competencies"><a href="<c:url value='/viewQuote/list.do'/>">Quote List</a></li>
+					<li class="competencies"><a href="<c:url value='/editQuote.do?id='/>${quote.id}">Edit</a></li>
 					<li class="competencies"><a href="<c:url value='/viewQuote/pdf.do?id='/>${quote.id}">View PDF</a></li>
 				</ul>
 			</div>
