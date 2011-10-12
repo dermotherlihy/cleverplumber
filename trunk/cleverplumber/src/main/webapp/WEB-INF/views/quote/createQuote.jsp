@@ -15,8 +15,7 @@
 	<div class="span-12 last">	
 		<form:form modelAttribute="quote" method="post">
 		  	<fieldset>		
-				<form:hidden path="customer.id"/>
-				<form:hidden path="company.id"/>
+				<form:hidden path="id"/>
 				<p>
                   <form:label for="quoteType" path="quoteType" cssErrorClass="error">Quote Type</form:label><br/>
                   <form:select path="quoteType">

@@ -8,8 +8,9 @@
 </head>
 
 <body>
-	<h1>${comment.quote.customer.fullName} - quote comment</h1>
-	<form:form commandName="comment" method="PUT">
+		
+		<input type="hidden" value="${quote.id}" name="quote.id" />
+		<form:form commandName="comment" method="PUT">
 		<form:hidden path="id" />
 		<table class="form">
 			<tr>
@@ -20,8 +21,8 @@
 
 		</table>
 		<div class="buttonMargin">
-			<input type="submit" class="button" name="Edit" value="Edit" /> <input
-				type="submit" class="button" name="cancel" value="Cancel" />
+			<input type="submit" class="button" name="Edit" value="Edit" /> 
+			<input type="submit" class="button" name="cancel" value="Cancel" />
 		</div>
 
 	</form:form>
