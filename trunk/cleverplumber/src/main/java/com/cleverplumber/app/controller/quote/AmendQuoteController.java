@@ -24,8 +24,7 @@ import com.dermotherlihy.quotation.model.BrochureType;
 import com.dermotherlihy.quotation.model.Quote;
 import com.dermotherlihy.quotation.model.QuoteType;
 @Controller
-@RequestMapping(value = "/editQuote.do")
-public class EditQuoteController {
+public class AmendQuoteController {
 
 	@Autowired
 	private QuoteManager quoteManager;
@@ -45,7 +44,7 @@ public class EditQuoteController {
 				new BrochureTypeEditor());
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET, value = "/editQuote.do")
 	public String getEditForm(Quote quote, Model model) {
 		model.addAttribute(quote);
 		model.addAttribute("quoteTypes", QuoteType.values());
@@ -53,7 +52,13 @@ public class EditQuoteController {
 		return "quote/editQuote";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/deleteQuote.do")
+	public String delete(@Valid Quote quote, BindingResult result, HttpServletRequest request, Model model) {
+		quoteManager.deleteQuote(quote);
+		return "redirect:/viewQuote/list.do";
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/editQuote.do")
 	public String edit(@Valid Quote quote, BindingResult result, HttpServletRequest request, Model model) {
 		if (result.hasErrors()) {
 			return "quote/editQuote";
