@@ -90,8 +90,9 @@
 			<div class="pageMenuInner">
 				<ul>
 					<li class="competencies"><a href="<c:url value='/home.do'/>">Home</a></li>
-					<li class="competencies"><a href="<c:url value='/viewQuote/list.do'/>">Quote List</a></li>
+					<li class="competencies"><a href="<c:url value='/deleteQuote.do?id='/>${quote.id}">Delete</a></li>
 					<li class="competencies"><a href="<c:url value='/editQuote.do?id='/>${quote.id}">Edit</a></li>
+					<li class="competencies"><a href="<c:url value='/viewQuote/list.do'/>">Quote List</a></li>
 					<li class="competencies"><a href="<c:url value='/viewQuote/pdf.do?id='/>${quote.id}">View PDF</a></li>
 				</ul>
 			</div>

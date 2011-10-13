@@ -14,6 +14,7 @@ public class QuoteManagerImpl implements QuoteManager {
 
 	@Autowired
 	private EmailManager emailManager;
+	
 
 	public void createOrUpdateQuote(Quote quote) {
 		quote.calculateVatAndTotal();
@@ -60,6 +61,10 @@ public class QuoteManagerImpl implements QuoteManager {
 
 	public void sendQuoteEmail(Quote quote) {
 		emailManager.sendEmail(quote);
+	}
+
+	public void deleteQuote(Quote quote) {
+		quote.remove();
 	}
 
 }
