@@ -1,5 +1,6 @@
 package com.cleverplumber.app.controller.customer;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -32,9 +33,12 @@ public class EditCustomerController {
 		}
 		
 		@RequestMapping(method = RequestMethod.POST)
-		public String create(@Valid Customer customer, BindingResult result) {
+		public String create(@Valid Customer customer, BindingResult result, HttpServletRequest request) {
 			if (result.hasErrors()) {
 				return "customer/editCustomer";
+			}
+			if (request.getParameter("cancel") != null) {
+				return "redirect:/viewCustomer/list.do";
 			}
 			customer.persist();
 			return "redirect:/viewCustomer/list.do";
