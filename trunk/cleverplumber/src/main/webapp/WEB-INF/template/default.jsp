@@ -37,7 +37,7 @@
     <decorator:body />
   </div>
 <div id="footer">
-    <p>Version 0.0.1 </p>
+    <p>Version 0.0.2 </p>
   </div>
  </div>
 </div>
