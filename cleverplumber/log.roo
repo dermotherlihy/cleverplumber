@@ -5,3 +5,10 @@ exit
 // [failed] persistence setup --provider HIBERNATE --database POSTGRES --databaseName cleverplumber --userName postgres --password postgres
 exit
 // Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-15 20:50:11
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2012-10-13 18:39:29
+focus --class com.dermotherlihy.quotation.model.Quote
+// [failed] field string --fieldName jobAddressLine1  --sizeMax 45 
+focus --class com.dermotherlihy.quotation.model.Quote
+// [failed] field string --fieldName jobAddressLine1  --sizeMax 45 
+exit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2012-10-13 18:51:19
