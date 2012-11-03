@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dermotherlihy.quotation.model.Customer;
 
@@ -36,4 +37,12 @@ public class ViewCustomerController {
 		model.addAttribute("customerList",customerList );
 		return "customer/customerList";
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/viewCustomerQuotes.do")
+	public ModelAndView getCustomer(Customer customer, ModelAndView model) {
+		model.addObject("quoteList", customer.getQuotes());
+		model.setViewName("customer/viewQuotes");
+		return model;
+	}
+
 }

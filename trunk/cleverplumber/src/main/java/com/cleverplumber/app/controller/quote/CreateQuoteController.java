@@ -25,6 +25,7 @@ import com.cleverplumber.app.service.quote.QuoteManager;
 import com.dermotherlihy.quotation.model.BrochureType;
 import com.dermotherlihy.quotation.model.Company;
 import com.dermotherlihy.quotation.model.Customer;
+import com.dermotherlihy.quotation.model.Job;
 import com.dermotherlihy.quotation.model.Quote;
 import com.dermotherlihy.quotation.model.QuoteType;
 
@@ -49,6 +50,9 @@ public class CreateQuoteController {
 			Quote quote = new Quote();
 			Customer customer = Customer.findCustomer(customerId);
 			quote.setCustomer(customer);
+			Job newJob = new Job();
+			newJob.setUpJobDefaults(customer);
+			quote.setJob(newJob);
 			quote.setCompany(Company.findAllCompanys().get(0));
 			quote.setCreatedBy(employeeManager.findEmployeeByUserName(principal.getName()));
 			return quote;

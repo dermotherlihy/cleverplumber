@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="369"/>
+	<property name="ireport.y" value="534"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -38,41 +38,44 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="comments" class="java.util.Set">
-		<fieldDescription><![CDATA[comments]]></fieldDescription>
-	</field>
-	<field name="company" class="com.dermotherlihy.quotation.model.Company">
-		<fieldDescription><![CDATA[company]]></fieldDescription>
-	</field>
-	<field name="createdBy" class="com.dermotherlihy.quotation.model.Employee">
-		<fieldDescription><![CDATA[createdBy]]></fieldDescription>
-	</field>
-	<field name="createdDate" class="java.util.Date">
-		<fieldDescription><![CDATA[createdDate]]></fieldDescription>
-	</field>
 	<field name="customer" class="com.dermotherlihy.quotation.model.Customer">
 		<fieldDescription><![CDATA[customer]]></fieldDescription>
-	</field>
-	<field name="labour" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[labour]]></fieldDescription>
 	</field>
 	<field name="materials" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[materials]]></fieldDescription>
 	</field>
-	<field name="quoteType" class="com.dermotherlihy.quotation.model.QuoteType">
-		<fieldDescription><![CDATA[quoteType]]></fieldDescription>
+	<field name="vatRate" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[vatRate]]></fieldDescription>
 	</field>
 	<field name="total" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[total]]></fieldDescription>
 	</field>
+	<field name="job" class="com.dermotherlihy.quotation.model.Job">
+		<fieldDescription><![CDATA[job]]></fieldDescription>
+	</field>
+	<field name="labour" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[labour]]></fieldDescription>
+	</field>
 	<field name="vat" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[vat]]></fieldDescription>
 	</field>
-	<field name="vatRate" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[vatRate]]></fieldDescription>
-	</field>
 	<field name="brochureType" class="com.dermotherlihy.quotation.model.BrochureType">
 		<fieldDescription><![CDATA[brochureType]]></fieldDescription>
+	</field>
+	<field name="createdBy" class="com.dermotherlihy.quotation.model.Employee">
+		<fieldDescription><![CDATA[createdBy]]></fieldDescription>
+	</field>
+	<field name="comments" class="java.util.Set">
+		<fieldDescription><![CDATA[comments]]></fieldDescription>
+	</field>
+	<field name="quoteType" class="com.dermotherlihy.quotation.model.QuoteType">
+		<fieldDescription><![CDATA[quoteType]]></fieldDescription>
+	</field>
+	<field name="company" class="com.dermotherlihy.quotation.model.Company">
+		<fieldDescription><![CDATA[company]]></fieldDescription>
+	</field>
+	<field name="createdDate" class="java.util.Date">
+		<fieldDescription><![CDATA[createdDate]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -181,20 +184,14 @@ provides full control over every aspect of any heating system]]></text>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{createdBy}.getFirstName() + " " +$F{createdBy}.getLastName()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="17" y="467" width="519" height="14"/>
+				<reportElement x="17" y="467" width="522" height="14"/>
 				<textElement/>
-				<text><![CDATA[If you have any further questions or would like to proceed and book in an installation date please do not hesitate to ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="17" y="481" width="66" height="14"/>
-				<textElement/>
-				<text><![CDATA[contact us on
-]]></text>
+				<text><![CDATA[If you have any further questions or would like to proceed and book in an installation date please do not]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="83" y="481" width="453" height="14"/>
+				<reportElement x="17" y="481" width="522" height="14"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getPhoneNumber().trim() +" or "+$F{company}.getEmailAddress()]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["hesitate to contact us on "+$F{company}.getPhoneNumber().trim() +" or "+$F{company}.getEmailAddress()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="17" y="308" width="522" height="38"/>
@@ -208,9 +205,9 @@ provides full control over every aspect of any heating system]]></text>
 				<text><![CDATA[Watford Plumbers pride themselves on combining appropriate heat source technologies, products and heating  system controls to deliver cost effective, energy efficient, space and water heating solutions.]]></text>
 			</staticText>
 		</band>
-		<band height="126">
+		<band height="147">
 			<componentElement>
-				<reportElement x="74" y="90" width="465" height="23"/>
+				<reportElement x="74" y="100" width="465" height="23"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="dataset1">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{comments})]]></dataSourceExpression>
@@ -234,12 +231,35 @@ provides full control over every aspect of any heating system]]></text>
 				</jr:list>
 			</componentElement>
 			<staticText>
-				<reportElement x="17" y="60" width="162" height="30"/>
+				<reportElement x="17" y="81" width="67" height="19"/>
 				<textElement>
-					<font size="16" isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Labour]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="196" y="11" width="162" height="30"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quote Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="61" width="67" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Site ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="84" y="61" width="455" height="20"/>
+				<textElement>
+					<font size="10" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{job}.getAddressLine1()+($F{job}.getAddressLine2() == null || $F{job}.getAddressLine2().equals("")?$F{job}.getAddressLine2():", "+$F{job}.getAddressLine2())
++($F{job}.getAddressLine3()==null || $F{job}.getAddressLine3().equals("")?$F{job}.getAddressLine3():", "+$F{job}.getAddressLine3())
++($F{job}.getPostcode()==null || $F{job}.getPostcode().equals("")? $F{job}.getPostcode(): ", "+$F{job}.getPostcode())]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="116">
 			<rectangle>
@@ -334,7 +354,7 @@ provides full control over every aspect of any heating system]]></text>
 		</band>
 		<band height="223">
 			<staticText>
-				<reportElement x="17" y="13" width="516" height="157"/>
+				<reportElement x="17" y="13" width="516" height="128"/>
 				<textElement/>
 				<text><![CDATA[To accept this quote a 50% deposit will be required in cleared funds before confirming an appointment.  The remaining monies are due upon completion of works.
 We accept cash, bank transfer and cheque.
@@ -344,10 +364,16 @@ Sort Code : 30-99-21
 Account Number : 38237768
 
 
-Please send cheques address at top of quote. (Please clearly state your name on reverse side of cheque):
-
-Estimate valid for 3 months from date issued]]></text>
+Please send cheques to address at top of quote. (Please clearly state your name on reverse side of cheque):
+]]></text>
 			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="17" y="141" width="459" height="20"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Estimate valid for 3 months from "+new SimpleDateFormat("dd/MM/yyyy").format($F{createdDate})]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -372,7 +398,7 @@ Estimate valid for 3 months from date issued]]></text>
 				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{company}.getName()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="20" y="10" width="513" height="19"/>
+				<reportElement x="20" y="11" width="513" height="19"/>
 				<textElement>
 					<font size="6"/>
 				</textElement>

@@ -98,6 +98,7 @@
 					<li class="competencies"><a href="<c:url value='/home.do'/>">Home</a></li>
 					<li class="competencies"><a href="<c:url value='/viewCustomer/list.do'/>">Customer List</a></li>
 					<li class="competencies"><a href="<c:url value='/editCustomer.do?id='/>${customer.id}">Edit</a></li>
+					<li class="competencies"><a href="<c:url value='/viewCustomerQuotes.do?id='/>${customer.id}">View Quotes</a></li>
 					<li class="competencies"><a href="<c:url value='/newQuote.do?customer.id='/>${customer.id}">New Quote</a></li>
 				</ul>
 			</div>

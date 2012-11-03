@@ -44,7 +44,7 @@ public class ViewQuoteController {
 	@RequestMapping(value = "/viewQuote/list.do")
 	public String getQuotes(Model model) {
 		@SuppressWarnings("unchecked")
-		List<Quote> quoteList = quoteManager.getQuotesForLastThreeMonths();
+		List<Quote> quoteList = quoteManager.getAllQuotes();
 		model.addAttribute("quoteList", quoteList);
 		return "quote/quoteList";
 	}

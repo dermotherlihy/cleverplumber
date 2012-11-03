@@ -33,6 +33,22 @@
                   </form:select>
                   <form:errors path="brochureType" cssClass="errorMessage" />
                </p>
+               	<p>	
+					<form:label for="addressLine1" path="job.addressLine1" cssErrorClass="error">Job Address Line 1</form:label>
+					<form:input path="addressLine1" /> <form:errors path="job.addressLine1" />
+				</p>
+				<p>	
+					<form:label for="addressLine2" path="job.addressLine2" cssErrorClass="error">Job Address Line 2</form:label>
+					<form:input path="addressLine2" /> <form:errors path="job.addressLine2" />
+				</p>
+				<p>	
+					<form:label for="addressLine3" path="job.addressLine3" cssErrorClass="error">Job Address Line 3</form:label>
+					<form:input path="addressLine3" /> <form:errors path="job.addressLine3" />
+				</p>
+				<p>	
+					<form:label for="postcode" path="job.postcode" cssErrorClass="error">Job Postcode</form:label>
+					<form:input path="postcode" /> <form:errors path="job.postcode" />
+				</p>
 				<p>	
 					<form:label for="labour" path="labour" cssErrorClass="error">Labour Cost</form:label><br/>
 					<form:input path="labour" /> <form:errors path="labour" cssClass="errorMessage" />
