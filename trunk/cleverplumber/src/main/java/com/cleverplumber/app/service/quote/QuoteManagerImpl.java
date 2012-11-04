@@ -1,5 +1,6 @@
 package com.cleverplumber.app.service.quote;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -32,10 +33,11 @@ public class QuoteManagerImpl implements QuoteManager {
 		return quote;
 
 	}
-
-	public List getQuotesForDates(Date fromDate, Date toDate) {
-		return Quote.entityManager().createNamedQuery("Quote.byDate").setParameter(1, fromDate.getTime()).setParameter(2, fromDate.getTime())
-				.getResultList();
+	
+	public List<Quote> getQuotesForPastYear(){
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.YEAR, -1);
+		return Quote.entityManager().createNamedQuery("Quote.byDate").setParameter(1, c.getTime()).setParameter(2, new Date()).getResultList();
 	}
 
 	public void deleteQuoteComment(Long quoteId, Comment comment) {
